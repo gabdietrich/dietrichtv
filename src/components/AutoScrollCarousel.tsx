@@ -104,7 +104,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
           {/* Left column - Project info */}
           <div className="space-y-1">
             <div className="text-sm text-gray-500">Project</div>
-            <h2 className="text-2xl font-normal text-black font-['Instrument_Sans']">{work.title}</h2>
+            <h2 className="typography-h4 text-black">{work.title}</h2>
             {work.client && (
               <p className="text-gray-600 text-sm">by {work.client}</p>
             )}

@@ -4,12 +4,12 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto px-[15px] py-12">
         {/* Studio name at top */}
         <div className="mb-16">
-          <h1 className="text-lg text-black font-['Instrument_Sans']">dietrich.tv studio</h1>
+          <h1 className="typography-h2 text-black">dietrich.tv studio</h1>
         </div>
 
         {/* Main heading */}
         <div className="mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl text-black leading-tight max-w-4xl font-['Instrument_Sans']">
+          <h2 className="typography-h1 text-black max-w-4xl">
             Merging cinema, design, and artificial intelligence to craft images where art and brand meet.
           </h2>
         </div>
@@ -19,7 +19,7 @@ export default function ContactPage() {
 
         {/* What we do section */}
         <div className="mb-20">
-          <h3 className="text-3xl md:text-4xl text-black mb-12 font-['Instrument_Sans']">What we do</h3>
+          <h3 className="typography-h3 text-black mb-12">What we do</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* FILM & IMAGE */}

@@ -282,7 +282,7 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
         <div className="max-w-7xl mx-auto px-[15px] mb-16">
           {/* Main statement */}
           <div className="mb-12">
-            <h1 className="text-black max-w-4xl">
+            <h1 className="typography-h1 text-black max-w-4xl">
               we are a mixed-media production company based in são paulo brazil - working in the intersection of design, film production & post-production.
             </h1>
           </div>
@@ -293,7 +293,7 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
           {/* Our work title and Category Filter in same line */}
           <div className="flex justify-between items-center mb-6">
             {/* Our work title - smaller */}
-            <h2 className="text-base text-black font-['Instrument_Sans']">Our work</h2>
+            <h2 className="typography-h2 text-black">Our work</h2>
             
             {/* Category Filter */}
             <div className="flex flex-wrap gap-4">
@@ -348,7 +348,7 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
               <div className="space-y-12">
                 {/* 15+ */}
                 <div>
-                  <div className="text-8xl md:text-9xl text-black mb-2 font-['Instrument_Sans'] leading-none">15+</div>
+                  <div className="text-8xl md:text-9xl text-black mb-2 leading-none font-['Instrument_Sans']">15+</div>
                   <div className="text-black text-sm max-w-xs">
                     Years of experience combining cinema, design and technology.
                   </div>
