@@ -40,19 +40,19 @@ const mockWorks = [
       }
     ]
   },
-  {
+    {
     id: 2,
-    title: "Ernesto Neto for Le Bon Marché Rive Gauche",
-    category: "documentary",
-    year: "2024",
-    description: "Capturing the artist before and after the exhibition. Where brand and art meet through cinema.",
-    client: "Le Bon Marché",
-    fullDescription: "Filming an artist in their element is very different from documenting an exhibition. It is moving from the serious studio space, where instalment and previous works are built to develop into gigantic sculptures, to the white walls, huge architecture, that evoke an exhibition or a public square. The core process of their exhibition: art as method. For as, this project reinforces something essential: brands can truly connect and air form are showcasing results, but by embracing processes. That's where aesthetic resonance, truth, happens in boundaries of advertising.",
-    projectType: "Case Study",
-    role: "Short film",
-    artDirection: "Art Direction",
-    colorGrading: "Color Grading", 
-    creativeProducer: "Creative Producer",
+    title: "Fashion Forward Brazil",
+    category: "fashion",
+    year: "2024", 
+    description: "A cinematic journey through São Paulo's emerging fashion scene.",
+    client: "SPFW",
+    fullDescription: "Fashion Forward Brazil explores the intersection between traditional craftsmanship and contemporary design in São Paulo's vibrant fashion landscape.",
+    projectType: "Documentary",
+    role: "Fashion Film",
+    artDirection: "Creative Direction", 
+    colorGrading: "Color Grading",
+    creativeProducer: "Executive Producer",
     vimeoId: "891234567",
     carouselImages: [
       {
@@ -202,8 +202,55 @@ function AutoScrollCarousel({ images }: AutoScrollCarouselProps) {
   );
 }
 
+// Function to get project-specific content
+const getProjectContent = (projectId: number) => {
+  switch (projectId) {
+    case 1:
+      return {
+        paragraphs: [
+          "A spec film crafted entirely with artificial intelligence, exploring the boundaries between technology and luxury storytelling.",
+          "At Dietrich.TV, we embraced AI as a creative partner, using generative tools to craft every frame, sound, and movement of this ethereal piece for Maison Francis Kurkdjian.",
+          "Our approach wasn't about replacing human creativity, but amplifying it. The result is a film that feels both otherworldly and deeply human, capturing the essence of Grand Soir through an entirely new lens.",
+          "This project represents our vision for the future of filmmaking: where artificial intelligence becomes a brush in the hands of digital artists, creating beauty that was previously impossible."
+        ],
+        tags: ["AI Cinema", "Luxury Brand", "Generative Art", "Spec Work"]
+      };
+    case 2:
+      return {
+        paragraphs: [
+          "A cinematic exploration of São Paulo's vibrant fashion ecosystem, where tradition meets innovation on every street corner.",
+          "Fashion Forward Brazil captures the raw energy of emerging designers who are redefining what Brazilian fashion means to the world.",
+          "Through intimate portraits and dynamic runway sequences, we documented a generation of creators who blend ancestral techniques with cutting-edge design philosophy.",
+          "This documentary celebrates not just clothing, but the cultural movement that positions Brazil as a powerhouse of contemporary fashion creativity."
+        ],
+        tags: ["Fashion Documentary", "Cultural Portrait", "São Paulo", "Emerging Designers"]
+      };
+    case 3:
+      return {
+        paragraphs: [
+          "An editorial fashion film that pushes the boundaries of visual storytelling, merging high fashion with experimental cinematography.",
+          "Shot across multiple locations in São Paulo, this project explores fashion as a form of architectural expression, where garments become structures and models become living sculptures.",
+          "Our approach combined traditional fashion film techniques with avant-garde visual effects, creating a piece that feels both editorial and artistic.",
+          "Fashion Forward represents our commitment to elevating fashion content beyond mere documentation, transforming it into pure visual poetry."
+        ],
+        tags: ["Fashion Film", "Editorial", "Visual Poetry", "Avant-garde"]
+      };
+    default:
+      return {
+        paragraphs: [
+          "Every project at Dietrich.TV begins with a question: how can we tell this story in a way that's never been told before?",
+          "Our approach combines traditional filmmaking craft with cutting-edge technology, always in service of authentic storytelling.",
+          "Whether working with brands, artists, or cultural institutions, we believe in the power of cinema to create genuine emotional connections.",
+          "This project represents our ongoing exploration of how visual media can bridge the gap between commercial objectives and artistic expression."
+        ],
+        tags: ["Creative Direction", "Brand Storytelling", "Visual Innovation", "Cultural Bridge"]
+      };
+  }
+};
+
 export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps) {
   const currentProject = mockWorks.find(work => work.id === projectId);
+  const projectContent = getProjectContent(projectId);
   
   if (!currentProject) {
     return <div className="min-h-screen bg-white flex items-center justify-center">Project not found</div>;
@@ -214,45 +261,36 @@ export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps)
 
   return (
     <div className="min-h-screen bg-white text-black pt-20">
-      {/* Header section - Updated to match WorkPage width */}
+      {/* Header section - Case Study Layout */}
       <div className="max-w-7xl mx-auto px-[15px] py-12">
-        {/* Project type and title */}
-        <div className="mb-8 space-y-4">
-          <div className="text-sm text-gray-500 uppercase tracking-wide">{currentProject.projectType}</div>
-          <h1 className="text-4xl md:text-5xl text-black leading-tight font-['Instrument_Sans']">
-            {currentProject.title}
-          </h1>
-        </div>
-
-        {/* Project info grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Left column - Project details */}
+        {/* Two column layout like case study */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+          {/* Left column - Project type and title */}
           <div className="space-y-6">
-            <div className="space-y-4">
-              <div>
-                <div className="text-sm text-gray-500">Short film</div>
-                <div className="text-base text-black">{currentProject.role}</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-500">Art Direction</div>
-                <div className="text-base text-black">{currentProject.artDirection}</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-500">Color Grading</div>
-                <div className="text-base text-black">{currentProject.colorGrading}</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-500">Creative Producer</div>
-                <div className="text-base text-black">{currentProject.creativeProducer}</div>
-              </div>
-            </div>
+            <div className="typography-h5 text-gray-500 uppercase tracking-wide">{currentProject.projectType}</div>
+            <h1 className="typography-h1 text-black leading-tight">
+              {currentProject.title}
+            </h1>
           </div>
 
-          {/* Right column - Description */}
-          <div className="space-y-6">
-            <p className="text-base text-black leading-relaxed">
-              {currentProject.fullDescription}
-            </p>
+          {/* Right column - Description and tags */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              {projectContent.paragraphs.map((paragraph, index) => (
+                <p key={index} className="typography-paragraph1 text-black">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            
+            {/* Tags section - aesthetic only */}
+            <div className="pt-8 border-t border-gray-200">
+              <div className="space-y-2">
+                {projectContent.tags.map((tag, index) => (
+                  <div key={index} className="typography-paragraph2 text-gray-600">{tag}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
