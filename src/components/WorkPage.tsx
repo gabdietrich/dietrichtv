@@ -4,181 +4,313 @@ import AutoScrollCarousel from './AutoScrollCarousel';
 
 const categories = ['all', 'commercial', 'fashion', 'film', 'animation', 'documentary'];
 
-// Mock data with different thumbnail images for each video
+// Real projects data based on provided screenshots
 const mockWorks = [
   {
     id: 1,
-    title: "Grand Soir",
+    title: "Tresemmé",
     category: "commercial",
     year: "2024",
-    description: "A spec film crafted entirely with artificial intelligence.",
-    client: "Maison Francis Kurkdjian",
+    description: "A beauty film starring Sabrina Sato, in which hair meets star quality. Directed by Dietrich with O2 Filmes.",
+    client: "Brilho Lamelar",
     videos: [
       { 
         id: 1, 
         thumbnail: "https://images.unsplash.com/photo-1680503504148-25f2d178ff05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwcm9kdWN0fGVufDF8fHx8MTc1NTc4NDI2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Opening Scene",
-        description: "Grand Soir by Maison Francis Kurkdjian. A spec film crafted entirely with artificial intelligence."
+        title: "Sabrina Sato",
+        description: "A beauty film starring Sabrina Sato, in which hair meets star quality."
       },
       { 
         id: 2, 
         thumbnail: "https://images.unsplash.com/photo-1595389294696-ae969ff733a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzU1NzExNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Product Reveal",
-        description: "Capturing the essence of luxury through AI-generated visuals and cinematography."
+        title: "Brilho Lamelar",
+        description: "Technical beauty showcase of Tresemmé's laminar shine technology."
       },
       { 
         id: 3, 
         thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Lifestyle Moments",
-        description: "Elegant moments that showcase the fragrance in everyday luxury settings."
-      },
-      { 
-        id: 4, 
-        thumbnail: "https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzU1Njk2OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Brand Story",
-        description: "The narrative behind the fragrance, told through innovative AI filmmaking."
-      },
-      { 
-        id: 5, 
-        thumbnail: "https://images.unsplash.com/photo-1616527546362-bf6b7f80a751?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxtJTIwcHJvZHVjdGlvbiUyMGNpbmVtYXxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Final Cut",
-        description: "The complete commercial showcasing the art of AI-driven storytelling."
+        title: "Beauty Film",
+        description: "Cinematic approach to beauty advertising with O2 Filmes production."
       }
     ]
   },
   {
     id: 2,
-    title: "Ernesto Neto for Le Bon Marché Rive Gauche",
-    category: "documentary",
+    title: "Gracinha",
+    category: "commercial",
     year: "2024",
-    description: "Capturing the artist before and after the exhibition. Where brand and art meet through cinema.",
-    client: "Le Bon Marché",
+    description: "A music film that blends pop, fantasy, and cinema. Directed by Dietrich with Manu Gavassi.",
+    client: "Disney+",
     videos: [
       { 
-        id: 6, 
+        id: 4, 
         thumbnail: "https://images.unsplash.com/photo-1661260728107-0cd7bf801685?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb2N1bWVudGFyeSUyMHN0cmVldHxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Artist Portrait",
-        description: "Capturing the artist before and after the exhibition. Where brand and art meet through cinema."
+        title: "Music Film",
+        description: "A music film that blends pop, fantasy, and cinema."
       },
       { 
-        id: 7, 
+        id: 5, 
         thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Exhibition Setup",
-        description: "Behind the scenes of creating a monumental art installation in Paris."
+        title: "Disney+ Content",
+        description: "Creative collaboration with Disney+ streaming platform."
       },
       { 
-        id: 8, 
+        id: 6, 
         thumbnail: "https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzU1Njk2OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Opening Night",
-        description: "The grand opening where fashion, art, and culture converge in celebration."
-      },
-      { 
-        id: 9, 
-        thumbnail: "https://images.unsplash.com/photo-1680503504148-25f2d178ff05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwcm9kdWN0fGVufDF8fHx8MTc1NTc4NDI2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Artist Interview",
-        description: "Intimate conversations with Ernesto Neto about his creative process."
+        title: "Manu Gavassi",
+        description: "Musical collaboration featuring Brazilian artist Manu Gavassi."
       }
     ]
   },
   {
     id: 3,
-    title: "Fashion Forward",
-    category: "fashion",
+    title: "Mother's Day",
+    category: "commercial",
     year: "2024",
-    description: "Editorial video showcase for fashion week collection.",
-    client: "Studio Fashion",
+    description: "Fernanda Torres and Fernanda Montenegro star in an intimate film celebrating motherhood and timeless connection.",
+    client: "Hering",
     videos: [
       { 
-        id: 10, 
+        id: 7, 
         thumbnail: "https://images.unsplash.com/photo-1715541448446-3369e1cc0ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBzdHVkaW98ZW58MXx8fHwxNzU1Nzg0MjY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Runway Collection",
-        description: "Editorial video showcase for fashion week collection featuring avant-garde designs."
+        title: "Fernanda Torres",
+        description: "Intimate portrayal of motherhood with renowned Brazilian actress."
       },
       { 
-        id: 11, 
+        id: 8, 
         thumbnail: "https://images.unsplash.com/photo-1595389294696-ae969ff733a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzU1NzExNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Designer's Vision",
-        description: "Exploring the creative process behind the seasonal collection."
+        title: "Fernanda Montenegro",
+        description: "Celebrating timeless connection between generations."
       },
       { 
-        id: 12, 
+        id: 9, 
         thumbnail: "https://images.unsplash.com/photo-1616527546362-bf6b7f80a751?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxtJTIwcHJvZHVjdGlvbiUyMGNpbmVtYXxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Model Stories",
-        description: "Personal narratives from the models who brought the collection to life."
-      },
-      { 
-        id: 13, 
-        thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Behind the Scenes",
-        description: "The intricate preparation and coordination of a major fashion show."
+        title: "Hering Campaign",
+        description: "Mother's Day campaign for Brazilian fashion brand Hering."
       }
     ]
   },
   {
     id: 4,
-    title: "Urban Legend",
-    category: "film",
-    year: "2023",
-    description: "Independent narrative exploring city life.",
-    client: "Independent Films",
+    title: "Il Neige Rive Gauche",
+    category: "animation",
+    year: "2024",
+    description: "An animated winter tale for Le Bon Marché, where Paris becomes poetry.",
+    client: "Le Bon Marché Rive Gauche",
     videos: [
       { 
-        id: 14, 
-        thumbnail: "https://images.unsplash.com/photo-1661260728107-0cd7bf801685?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb2N1bWVudGFyeSUyMHN0cmVldHxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "City Awakens",
-        description: "Independent narrative exploring city life through the lens of ordinary people."
+        id: 10, 
+        thumbnail: "https://images.unsplash.com/photo-1663867148037-5dd602c68fd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGFuaW1hdGlvbnxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Winter Tale",
+        description: "An animated winter tale for Le Bon Marché, where Paris becomes poetry."
       },
       { 
-        id: 15, 
-        thumbnail: "https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzU1Njk2OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Character Study",
-        description: "Deep dive into the lives of urban dwellers and their interconnected stories."
+        id: 11, 
+        thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Paris Poetry",
+        description: "Transforming the iconic Parisian department store into animated poetry."
       },
       { 
-        id: 16, 
-        thumbnail: "https://images.unsplash.com/photo-1616527546362-bf6b7f80a751?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxtJTIwcHJvZHVjdGlvbiUyMGNpbmVtYXxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Night Scenes",
-        description: "The city transforms at night, revealing hidden stories and connections."
-      },
-      { 
-        id: 17, 
-        thumbnail: "https://images.unsplash.com/photo-1595389294696-ae969ff733a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzU1NzExNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Resolution",
-        description: "Where all the urban stories converge in a powerful narrative conclusion."
+        id: 12, 
+        thumbnail: "https://images.unsplash.com/photo-1680503504148-25f2d178ff05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwcm9kdWN0fGVufDF8fHx8MTc1NTc4NDI2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Le Bon Marché",
+        description: "Luxury retail experience through the lens of animation."
       }
     ]
   },
   {
     id: 5,
-    title: "Motion Poetry",
-    category: "animation",
+    title: "Desejo",
+    category: "commercial",
     year: "2024",
-    description: "Abstract animation series exploring emotions.",
-    client: "Art Collective",
+    description: "A sensorial film for Natura that celebrates desire as a living force. Directed by Dietrich with O2 Filmes.",
+    client: "Natura",
     videos: [
       { 
-        id: 18, 
-        thumbnail: "https://images.unsplash.com/photo-1663867148037-5dd602c68fd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGFuaW1hdGlvbnxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Emotional Landscapes",
-        description: "Abstract animation series exploring emotions through fluid visual poetry."
+        id: 13, 
+        thumbnail: "https://images.unsplash.com/photo-1661260728107-0cd7bf801685?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb2N1bWVudGFyeSUyMHN0cmVldHxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Sensorial Film",
+        description: "A sensorial film for Natura that celebrates desire as a living force."
       },
       { 
-        id: 19, 
+        id: 14, 
+        thumbnail: "https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzU1Njk2OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Living Force",
+        description: "Exploring desire through Brazilian cosmetics brand Natura."
+      },
+      { 
+        id: 15, 
+        thumbnail: "https://images.unsplash.com/photo-1616527546362-bf6b7f80a751?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxtJTIwcHJvZHVjdGlvbiUyMGNpbmVtYXxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "O2 Filmes",
+        description: "Production collaboration with O2 Filmes for Natura campaign."
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Democrata",
+    category: "commercial",
+    year: "2024",
+    description: "An elegant launch set to brazilian legend Jorge Ben's classic \"Lá Vem Ela\"",
+    client: "Gisele Bündchen + Cauã Raymond",
+    videos: [
+      { 
+        id: 16, 
+        thumbnail: "https://images.unsplash.com/photo-1715541448446-3369e1cc0ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBzdHVkaW98ZW58MXx8fHwxNzU1Nzg0MjY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Gisele Bündchen",
+        description: "Featuring supermodel Gisele Bündchen in elegant fashion campaign."
+      },
+      { 
+        id: 17, 
+        thumbnail: "https://images.unsplash.com/photo-1595389294696-ae969ff733a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzU1NzExNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Cauã Raymond",
+        description: "Co-starring Brazilian actor Cauã Raymond."
+      },
+      { 
+        id: 18, 
         thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Color Symphony",
-        description: "How colors dance and interact to create emotional resonance."
+        title: "Jorge Ben's Classic",
+        description: "Set to Jorge Ben's iconic Brazilian song \"Lá Vem Ela\"."
+      }
+    ]
+  },
+  {
+    id: 7,
+    title: "Manu Gavassi",
+    category: "fashion",
+    year: "2024",
+    description: "Three short films with Manu Gavassi, blending fashion, music, and cinema. A trilogy that explores image as performance and persona.",
+    client: "Three Short Films",
+    videos: [
+      { 
+        id: 19, 
+        thumbnail: "https://images.unsplash.com/photo-1661260728107-0cd7bf801685?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb2N1bWVudGFyeSUyMHN0cmVldHxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Fashion Film",
+        description: "Three short films with Manu Gavassi, blending fashion, music, and cinema."
       },
       { 
         id: 20, 
-        thumbnail: "https://images.unsplash.com/photo-1680503504148-25f2d178ff05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwcm9kdWN0fGVufDF8fHx8MTc1NTc4NDI2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Form and Flow",
-        description: "The relationship between movement and meaning in abstract animation."
+        thumbnail: "https://images.unsplash.com/photo-1715541448446-3369e1cc0ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBzdHVkaW98ZW58MXx8fHwxNzU1Nzg0MjY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Image Performance",
+        description: "A trilogy that explores image as performance and persona."
       },
       { 
         id: 21, 
+        thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Trilogy",
+        description: "Exploring the intersection of music, fashion, and cinema."
+      }
+    ]
+  },
+  {
+    id: 8,
+    title: "Ernesto Neto for Le Bon Marché Rive Gauche",
+    category: "documentary",
+    year: "2024",
+    description: "Capturing the artist before and after the exhibition. Where brand and art meet through cinema.",
+    client: "Shot on Film",
+    videos: [
+      { 
+        id: 22, 
+        thumbnail: "https://images.unsplash.com/photo-1661260728107-0cd7bf801685?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb2N1bWVudGFyeSUyMHN0cmVldHxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Artist Portrait",
+        description: "Capturing the artist before and after the exhibition."
+      },
+      { 
+        id: 23, 
+        thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Brand and Art",
+        description: "Where brand and art meet through cinema."
+      },
+      { 
+        id: 24, 
+        thumbnail: "https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzU1Njk2OTM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Shot on Film",
+        description: "Documentary captured using traditional film techniques."
+      }
+    ]
+  },
+  {
+    id: 9,
+    title: "Elsa Schiaparelli's Private Album",
+    category: "documentary",
+    year: "2024",
+    description: "Elsa Schiaparelli remembered through an intimate portrait film. A dialogue between fashion, memory, and the cosmos.",
+    client: "Documentary",
+    videos: [
+      { 
+        id: 25, 
+        thumbnail: "https://images.unsplash.com/photo-1680503504148-25f2d178ff05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwcm9kdWN0fGVufDF8fHx8MTc1NTc4NDI2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Private Album",
+        description: "Elsa Schiaparelli remembered through an intimate portrait film."
+      },
+      { 
+        id: 26, 
         thumbnail: "https://images.unsplash.com/photo-1715541448446-3369e1cc0ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBzdHVkaW98ZW58MXx8fHwxNzU1Nzg0MjY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
-        title: "Digital Dreams",
-        description: "Exploring the subconscious through algorithmic animation techniques."
+        title: "Fashion Memory",
+        description: "A dialogue between fashion, memory, and the cosmos."
+      },
+      { 
+        id: 27, 
+        thumbnail: "https://images.unsplash.com/photo-1595389294696-ae969ff733a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzU1NzExNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Intimate Portrait",
+        description: "Exploring the legacy of iconic fashion designer Elsa Schiaparelli."
+      }
+    ]
+  },
+  {
+    id: 10,
+    title: "Mother's Day",
+    category: "commercial", 
+    year: "2024",
+    description: "Sasha, Bruna Marquezine, Xuxa and Neide — a celebration of generations and love.",
+    client: "Hering",
+    videos: [
+      { 
+        id: 28, 
+        thumbnail: "https://images.unsplash.com/photo-1661260728107-0cd7bf801685?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb2N1bWVudGFyeSUyMHN0cmVldHxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Generations",
+        description: "Sasha, Bruna Marquezine, Xuxa and Neide — a celebration of generations and love."
+      },
+      { 
+        id: 29, 
+        thumbnail: "https://images.unsplash.com/photo-1715541448446-3369e1cc0ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwbW9kZWwlMjBzdHVkaW98ZW58MXx8fHwxNzU1Nzg0MjY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Celebration Love",
+        description: "Multi-generational Brazilian celebrities celebrating motherhood."
+      },
+      { 
+        id: 30, 
+        thumbnail: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHN0dWRpb3xlbnwxfHx8fDE3NTU3ODQyNjd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Hering Family",
+        description: "Family-focused campaign for Brazilian fashion brand Hering."
+      }
+    ]
+  },
+  {
+    id: 11,
+    title: "Grand Soir, by Maison Francis Kurkdjian",
+    category: "commercial",
+    year: "2024",
+    description: "Grand Soir by Maison Francis Kurkdjian. A spec film crafted entirely with artificial intelligence. 100% AI-made.",
+    client: "AI film",
+    videos: [
+      { 
+        id: 31, 
+        thumbnail: "https://images.unsplash.com/photo-1680503504148-25f2d178ff05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwcm9kdWN0fGVufDF8fHx8MTc1NTc4NDI2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "AI Cinema",
+        description: "Grand Soir by Maison Francis Kurkdjian. A spec film crafted entirely with artificial intelligence."
+      },
+      { 
+        id: 32, 
+        thumbnail: "https://images.unsplash.com/photo-1595389294696-ae969ff733a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzU1NzExNDc0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "100% AI-made",
+        description: "Pioneering fully AI-generated commercial film production."
+      },
+      { 
+        id: 33, 
+        thumbnail: "https://images.unsplash.com/photo-1616527546362-bf6b7f80a751?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxtJTIwcHJvZHVjdGlvbiUyMGNpbmVtYXxlbnwxfHx8fDE3NTU3ODQyNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", 
+        title: "Spec Film",
+        description: "Experimental spec work for luxury fragrance brand."
       }
     ]
   }

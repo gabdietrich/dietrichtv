@@ -205,35 +205,115 @@ function AutoScrollCarousel({ images }: AutoScrollCarouselProps) {
 // Function to get project-specific content
 const getProjectContent = (projectId: number) => {
   switch (projectId) {
-    case 1:
+    case 1: // Tresemmé
       return {
         paragraphs: [
-          "A spec film crafted entirely with artificial intelligence, exploring the boundaries between technology and luxury storytelling.",
-          "At Dietrich.TV, we embraced AI as a creative partner, using generative tools to craft every frame, sound, and movement of this ethereal piece for Maison Francis Kurkdjian.",
-          "Our approach wasn't about replacing human creativity, but amplifying it. The result is a film that feels both otherworldly and deeply human, capturing the essence of Grand Soir through an entirely new lens.",
-          "This project represents our vision for the future of filmmaking: where artificial intelligence becomes a brush in the hands of digital artists, creating beauty that was previously impossible."
+          "A beauty film starring Sabrina Sato, in which hair meets star quality. Directed by Dietrich with O2 Filmes.",
+          "This campaign for Tresemmé's Brilho Lamelar technology showcases the intersection of celebrity beauty and technical innovation.",
+          "Our approach focused on capturing Sabrina Sato's natural charisma while highlighting the product's laminar shine capabilities.",
+          "The collaboration with O2 Filmes brought together commercial expertise and artistic vision, creating a beauty film that transcends traditional advertising."
         ],
-        tags: ["AI Cinema", "Luxury Brand", "Generative Art", "Spec Work"]
+        tags: ["Beauty Film", "Celebrity", "O2 Filmes", "Commercial"]
       };
-    case 2:
+    case 2: // Gracinha
       return {
         paragraphs: [
-          "A cinematic exploration of São Paulo's vibrant fashion ecosystem, where tradition meets innovation on every street corner.",
-          "Fashion Forward Brazil captures the raw energy of emerging designers who are redefining what Brazilian fashion means to the world.",
-          "Through intimate portraits and dynamic runway sequences, we documented a generation of creators who blend ancestral techniques with cutting-edge design philosophy.",
-          "This documentary celebrates not just clothing, but the cultural movement that positions Brazil as a powerhouse of contemporary fashion creativity."
+          "A music film that blends pop, fantasy, and cinema. Directed by Dietrich with Manu Gavassi.",
+          "Created for Disney+, this project explores the magical intersection of music and visual storytelling.",
+          "Working with Manu Gavassi, we crafted a narrative that celebrates Brazilian pop culture within a fantastical cinematic framework.",
+          "The film represents our commitment to pushing the boundaries of music video format, creating content that works both as entertainment and art."
         ],
-        tags: ["Fashion Documentary", "Cultural Portrait", "São Paulo", "Emerging Designers"]
+        tags: ["Music Film", "Disney+", "Fantasy", "Brazilian Pop"]
       };
-    case 3:
+    case 3: // Mother's Day Hering 1
       return {
         paragraphs: [
-          "An editorial fashion film that pushes the boundaries of visual storytelling, merging high fashion with experimental cinematography.",
-          "Shot across multiple locations in São Paulo, this project explores fashion as a form of architectural expression, where garments become structures and models become living sculptures.",
-          "Our approach combined traditional fashion film techniques with avant-garde visual effects, creating a piece that feels both editorial and artistic.",
-          "Fashion Forward represents our commitment to elevating fashion content beyond mere documentation, transforming it into pure visual poetry."
+          "Fernanda Torres and Fernanda Montenegro star in an intimate film celebrating motherhood and timeless connection.",
+          "This Mother's Day campaign for Hering captures the profound bond between generations through the lens of Brazil's most beloved actresses.",
+          "Our direction focused on authentic moments that speak to universal themes of family, love, and continuity.",
+          "The film celebrates not just motherhood, but the enduring power of emotional connections that transcend time."
         ],
-        tags: ["Fashion Film", "Editorial", "Visual Poetry", "Avant-garde"]
+        tags: ["Mother's Day", "Hering", "Family", "Brazilian Cinema"]
+      };
+    case 4: // Il Neige Rive Gauche
+      return {
+        paragraphs: [
+          "An animated winter tale for Le Bon Marché, where Paris becomes poetry.",
+          "This seasonal campaign transforms the iconic Parisian department store into a dreamlike animated landscape.",
+          "Our animation approach captures the magic of winter in Paris, creating a visual poem that celebrates the wonder of the season.",
+          "The project represents our exploration of animation as a medium for luxury retail storytelling, where commerce meets pure artistic expression."
+        ],
+        tags: ["Animation", "Le Bon Marché", "Winter Tale", "Paris"]
+      };
+    case 5: // Desejo Natura
+      return {
+        paragraphs: [
+          "A sensorial film for Natura that celebrates desire as a living force. Directed by Dietrich with O2 Filmes.",
+          "This campaign explores the concept of desire through the lens of Brazilian beauty and cosmetics.",
+          "Our visual approach captures the raw energy and sensuality that defines the Natura brand, creating an intimate portrait of human connection.",
+          "The collaboration with O2 Filmes brought together technical excellence and artistic vision, resulting in a film that feels both commercial and deeply personal."
+        ],
+        tags: ["Sensorial Film", "Natura", "O2 Filmes", "Desire"]
+      };
+    case 6: // Democrata
+      return {
+        paragraphs: [
+          "An elegant launch set to Brazilian legend Jorge Ben's classic \"Lá Vem Ela\".",
+          "Featuring Gisele Bündchen and Cauã Raymond, this campaign celebrates Brazilian culture through fashion and music.",
+          "Our direction pays homage to Jorge Ben's iconic song while showcasing contemporary Brazilian style and elegance.",
+          "The project represents a perfect fusion of musical heritage and modern fashion sensibility, creating a truly Brazilian visual narrative."
+        ],
+        tags: ["Fashion", "Jorge Ben", "Brazilian Culture", "Elegance"]
+      };
+    case 7: // Manu Gavassi Three Films
+      return {
+        paragraphs: [
+          "Three short films with Manu Gavassi, blending fashion, music, and cinema. A trilogy that explores image as performance and persona.",
+          "This fashion film series examines the relationship between identity and performance in contemporary Brazilian pop culture.",
+          "Each film in the trilogy explores different aspects of Manu Gavassi's artistic persona, creating a multifaceted portrait of modern celebrity.",
+          "Our approach treated fashion as narrative, using clothing and styling to tell stories about identity, performance, and self-expression."
+        ],
+        tags: ["Fashion Film", "Trilogy", "Performance", "Identity"]
+      };
+    case 8: // Ernesto Neto
+      return {
+        paragraphs: [
+          "Capturing the artist before and after the exhibition. Where brand and art meet through cinema.",
+          "This documentary explores the creative process of renowned Brazilian artist Ernesto Neto through the lens of his Le Bon Marché exhibition.",
+          "Shot on film, our approach captures the raw authenticity of artistic creation, documenting both the preparation and aftermath of a major exhibition.",
+          "The project represents our commitment to documenting Brazilian art on the international stage, showing how local creativity translates to global contexts."
+        ],
+        tags: ["Documentary", "Shot on Film", "Brazilian Art", "Exhibition"]
+      };
+    case 9: // Elsa Schiaparelli
+      return {
+        paragraphs: [
+          "Elsa Schiaparelli remembered through an intimate portrait film. A dialogue between fashion, memory, and the cosmos.",
+          "This documentary explores the legacy of the iconic fashion designer through a deeply personal and poetic lens.",
+          "Our approach creates connections between Schiaparelli's revolutionary designs and contemporary fashion thinking, showing how her vision continues to influence modern creativity.",
+          "The film represents our exploration of fashion history as living memory, where past innovation continues to shape present expression."
+        ],
+        tags: ["Documentary", "Fashion History", "Legacy", "Memory"]
+      };
+    case 10: // Mother's Day Hering 2
+      return {
+        paragraphs: [
+          "Sasha, Bruna Marquezine, Xuxa and Neide — a celebration of generations and love.",
+          "This second Mother's Day campaign for Hering brings together multiple generations of Brazilian celebrities to celebrate family bonds.",
+          "Our direction focuses on the authentic connections between these women, creating a portrait of Brazilian motherhood that spans generations.",
+          "The film celebrates not just individual relationships, but the cultural continuity that defines Brazilian family values."
+        ],
+        tags: ["Mother's Day", "Generations", "Brazilian Celebrities", "Family"]
+      };
+    case 11: // Grand Soir
+      return {
+        paragraphs: [
+          "Grand Soir by Maison Francis Kurkdjian. A spec film crafted entirely with artificial intelligence. 100% AI-made.",
+          "This groundbreaking project represents our exploration of AI as a creative medium, pushing the boundaries of what's possible in commercial filmmaking.",
+          "Every frame, movement, and visual element was generated using artificial intelligence, creating a film that exists at the intersection of technology and luxury.",
+          "The project demonstrates our vision for the future of filmmaking, where AI becomes a collaborative partner in creating beauty that was previously impossible to achieve."
+        ],
+        tags: ["AI Cinema", "100% AI-made", "Spec Film", "Innovation"]
       };
     default:
       return {
