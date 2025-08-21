@@ -63,7 +63,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           <div className="mt-16">
             <button 
               onClick={handleViewWork}
-              className="text-white/80 hover:text-white text-lg border-b border-white/30 hover:border-white pb-1 transition-colors"
+              className="typography-text-link-2 text-white/80 hover:text-white border-b border-white/30 hover:border-white pb-1 transition-colors"
             >
               View Our Work →
             </button>

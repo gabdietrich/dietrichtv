@@ -123,7 +123,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             
             <button 
               onClick={() => onNavigate?.('project', work.id)}
-              className="text-gray-700 hover:text-black text-sm transition-colors flex items-center gap-1"
+              className="typography-text-link text-gray-700 hover:text-black transition-colors flex items-center gap-1"
             >
               See Project 
               <span className="text-xs">→</span>

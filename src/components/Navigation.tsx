@@ -52,7 +52,7 @@ export default function Navigation({ currentPage, onPageChange, isTransitioning 
                 key={page.id}
                 variant="ghost"
                 onClick={() => onPageChange(page.id)}
-                className={`text-base transition-all duration-200 ${
+                className={`typography-text-link transition-all duration-200 ${
                   isHomePage
                     ? currentPage === page.id 
                       ? 'text-white hover:text-white' 

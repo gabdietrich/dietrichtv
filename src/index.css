@@ -5340,6 +5340,49 @@ html {
   letter-spacing: -0.03em; /* -3% */
 }
 
+/* Text Links */
+.typography-text-link {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: -0.03em; /* -3% */
+}
+
+.typography-text-link-2 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 110%;
+  letter-spacing: -0.03em; /* -3% */
+}
+
+/* Navigation Links */
+.typography-nav-link {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.05em; /* -5% */
+}
+
+/* Paragraphs */
+.typography-paragraph1 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 121%;
+  letter-spacing: -0.05em; /* -5% */
+}
+
+.typography-paragraph2 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: -0.03em; /* -3% */
+}
+
 /* Responsive Typography */
 @media (max-width: 767px) {
   .typography-h1 {
@@ -5356,6 +5399,18 @@ html {
   
   .typography-h4 {
     font-size: 20px;
+  }
+  
+  .typography-text-link-2 {
+    font-size: 16px;
+  }
+  
+  .typography-nav-link {
+    font-size: 16px;
+  }
+  
+  .typography-paragraph1 {
+    font-size: 16px;
   }
 }
 
@@ -5374,5 +5429,17 @@ html {
   
   .typography-h4 {
     font-size: 22px;
+  }
+  
+  .typography-text-link-2 {
+    font-size: 18px;
+  }
+  
+  .typography-nav-link {
+    font-size: 18px;
+  }
+  
+  .typography-paragraph1 {
+    font-size: 18px;
   }
 }

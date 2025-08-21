@@ -339,9 +339,9 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Left column - Statement */}
               <div>
-                <p className="text-black text-base">
-                  We transform ideas into images that resonate across cultures.
-                </p>
+                            <p className="typography-paragraph2 text-black">
+              We transform ideas into images that resonate across cultures.
+            </p>
               </div>
               
               {/* Right column - Statistics */}
@@ -389,7 +389,7 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
           
           {/* Connect text */}
           <div className="mb-8">
-            <p className="text-black text-base">
+            <p className="typography-paragraph2 text-black">
               Connect with us to create your next project.
             </p>
           </div>

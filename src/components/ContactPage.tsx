@@ -26,10 +26,10 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div className="text-xs text-gray-500 uppercase tracking-wide">FILM & IMAGE</div>
               <div className="space-y-3">
-                <div className="text-base text-black">Commercials</div>
-                <div className="text-base text-black">Fashion Film</div>
-                <div className="text-base text-black">Art Projects</div>
-                <div className="text-base text-black">16mm / Digital</div>
+                <div className="typography-paragraph2 text-black">Commercials</div>
+                <div className="typography-paragraph2 text-black">Fashion Film</div>
+                <div className="typography-paragraph2 text-black">Art Projects</div>
+                <div className="typography-paragraph2 text-black">16mm / Digital</div>
               </div>
             </div>
 
@@ -37,10 +37,10 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div className="text-xs text-gray-500 uppercase tracking-wide">AI & INNOVATION</div>
               <div className="space-y-3">
-                <div className="text-base text-black">AI Cinema</div>
-                <div className="text-base text-black">Media Experiments</div>
-                <div className="text-base text-black">Generative Tools</div>
-                <div className="text-base text-black">New Mediums</div>
+                <div className="typography-paragraph2 text-black">AI Cinema</div>
+                <div className="typography-paragraph2 text-black">Media Experiments</div>
+                <div className="typography-paragraph2 text-black">Generative Tools</div>
+                <div className="typography-paragraph2 text-black">New Mediums</div>
               </div>
             </div>
 
@@ -48,10 +48,10 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div className="text-xs text-gray-500 uppercase tracking-wide">DESIGN & RESEARCH</div>
               <div className="space-y-3">
-                <div className="text-base text-black">Art Direction</div>
-                <div className="text-base text-black">Set Design</div>
-                <div className="text-base text-black">Creative Research</div>
-                <div className="text-base text-black">Visual Concepts</div>
+                <div className="typography-paragraph2 text-black">Art Direction</div>
+                <div className="typography-paragraph2 text-black">Set Design</div>
+                <div className="typography-paragraph2 text-black">Creative Research</div>
+                <div className="typography-paragraph2 text-black">Visual Concepts</div>
               </div>
             </div>
 
@@ -59,10 +59,10 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div className="text-xs text-gray-500 uppercase tracking-wide">BRAND & STORYTELLING</div>
               <div className="space-y-3">
-                <div className="text-base text-black">Brand Films</div>
-                <div className="text-base text-black">Cultural Strategy</div>
-                <div className="text-base text-black">Narrative Design</div>
-                <div className="text-base text-black">Content Campaigns</div>
+                <div className="typography-paragraph2 text-black">Brand Films</div>
+                <div className="typography-paragraph2 text-black">Cultural Strategy</div>
+                <div className="typography-paragraph2 text-black">Narrative Design</div>
+                <div className="typography-paragraph2 text-black">Content Campaigns</div>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
         {/* Contact section */}
         <div className="mb-20">
           <div className="mb-12">
-            <p className="text-lg text-black">
+            <p className="typography-paragraph1 text-black">
               Connect with us to explore your project's potential.
             </p>
           </div>
