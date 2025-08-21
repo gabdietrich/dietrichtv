@@ -267,7 +267,7 @@ export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps)
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
           {/* Left column - Project type and title */}
           <div className="space-y-6">
-            <div className="typography-h5 text-gray-500 uppercase tracking-wide">{currentProject.projectType}</div>
+            <div className="typography-h4 text-black underline decoration-1 underline-offset-2">{currentProject.projectType}</div>
             <h1 className="typography-h1 text-black leading-tight">
               {currentProject.title}
             </h1>
@@ -287,7 +287,7 @@ export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps)
             <div className="pt-8 border-t border-gray-200">
               <div className="space-y-2">
                 {projectContent.tags.map((tag, index) => (
-                  <div key={index} className="typography-paragraph2 text-gray-600">{tag}</div>
+                  <div key={index} className="typography-paragraph2 text-gray-500">{tag}</div>
                 ))}
               </div>
             </div>
