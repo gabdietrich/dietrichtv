@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { getProjectMedia, getProjectSlug } from '../config/mediaConfig';
 
 interface Video {
   id: number;
@@ -59,8 +60,19 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
     };
   }, [speed]);
 
+  // Get real media for this project
+  const projectSlug = getProjectSlug(work.id);
+  const projectMedia = getProjectMedia(projectSlug);
+  
+  // Use real carousel videos or fallback to work.videos
+  const carouselVideos = projectMedia?.carousel || work.videos.map(v => v.thumbnail);
+  
   // Triple the videos for seamless loop
-  const tripleVideos = [...work.videos, ...work.videos, ...work.videos];
+  const tripleVideos = [
+    ...carouselVideos,
+    ...carouselVideos,
+    ...carouselVideos
+  ];
 
   return (
     <div className="mb-[120px]">
@@ -71,8 +83,8 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
           className="flex gap-6 overflow-x-hidden px-[15px]"
           style={{ scrollBehavior: 'auto' }}
         >
-          {tripleVideos.map((video, index) => {
-            const videoKey = `${video.id}-${index}`;
+          {tripleVideos.map((videoSrc, index) => {
+            const videoKey = `${work.id}-${index}`;
             const isLoaded = videosLoaded.has(videoKey);
             
             return (
@@ -83,11 +95,15 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
                 {/* Square video container - non-interactive with sharp corners */}
                 <div className="relative aspect-square bg-gray-900 overflow-hidden">
                   <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-                    <ImageWithFallback
-                      src={video.thumbnail}
-                      alt={video.title || work.title}
+                    <video
+                      src={videoSrc}
                       className="w-full h-full object-cover"
-                      onLoad={() => handleVideoLoad(videoKey)}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      onLoadedData={() => handleVideoLoad(videoKey)}
+                      onError={() => console.error('Video failed to load:', videoSrc)}
                     />
                     <div className="absolute inset-0 bg-black/10" />
                   </div>
