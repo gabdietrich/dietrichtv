@@ -291,7 +291,7 @@ const mockWorks = [
     title: "Grand Soir, by Maison Francis Kurkdjian",
     category: "ai",
     year: "2024",
-    description: "Grand Soir by Maison Francis Kurkdjian. A spec film crafted entirely with artificial intelligence. 100% AI-made.",
+    description: "Grand Soir by Maison Francis Kurkdjian. A spec film crafted entirely with artificial intelligence.",
     client: "AI film",
     videos: [
       { 

@@ -117,9 +117,11 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
               {work.description}
             </p>
             
-            <div className="text-gray-400 text-xs">
-              100% AI-made.
-            </div>
+            {work.id === 11 && (
+              <div className="text-gray-400 text-xs">
+                100% AI-made.
+              </div>
+            )}
             
             <button 
               onClick={() => onNavigate?.('project', work.id)}
