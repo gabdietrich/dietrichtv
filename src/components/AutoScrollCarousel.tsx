@@ -77,6 +77,9 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   // Use real carousel videos or fallback to work.videos
   const carouselVideos = projectMedia?.carousel || work.videos.map(v => v.thumbnail);
   
+  // Additional debug for carousel videos
+  console.log('Final carouselVideos:', carouselVideos);
+  
   // Triple the videos for seamless loop
   const tripleVideos = [
     ...carouselVideos,
