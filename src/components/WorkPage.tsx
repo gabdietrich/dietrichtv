@@ -2,14 +2,14 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from "./ui/button";
 import AutoScrollCarousel from './AutoScrollCarousel';
 
-const categories = ['all', 'commercial', 'fashion', 'film', 'animation', 'documentary'];
+const categories = ['all', 'commercial', 'ai', 'beauty', 'documentary', 'music-video'];
 
 // Real projects data based on provided screenshots
 const mockWorks = [
   {
     id: 1,
     title: "Tresemmé",
-    category: "commercial",
+    category: "beauty",
     year: "2024",
     description: "A beauty film starring Sabrina Sato, in which hair meets star quality. Directed by Dietrich with O2 Filmes.",
     client: "Brilho Lamelar",
@@ -37,7 +37,7 @@ const mockWorks = [
   {
     id: 2,
     title: "Gracinha",
-    category: "commercial",
+    category: "music-video",
     year: "2024",
     description: "A music film that blends pop, fantasy, and cinema. Directed by Dietrich with Manu Gavassi.",
     client: "Disney+",
@@ -65,7 +65,7 @@ const mockWorks = [
   {
     id: 3,
     title: "Mother's Day",
-    category: "commercial",
+    category: "beauty",
     year: "2024",
     description: "Fernanda Torres and Fernanda Montenegro star in an intimate film celebrating motherhood and timeless connection.",
     client: "Hering",
@@ -93,7 +93,7 @@ const mockWorks = [
   {
     id: 4,
     title: "Il Neige Rive Gauche",
-    category: "animation",
+    category: "commercial",
     year: "2024",
     description: "An animated winter tale for Le Bon Marché, where Paris becomes poetry.",
     client: "Le Bon Marché Rive Gauche",
@@ -121,7 +121,7 @@ const mockWorks = [
   {
     id: 5,
     title: "Desejo",
-    category: "commercial",
+    category: "beauty",
     year: "2024",
     description: "A sensorial film for Natura that celebrates desire as a living force. Directed by Dietrich with O2 Filmes.",
     client: "Natura",
@@ -149,7 +149,7 @@ const mockWorks = [
   {
     id: 6,
     title: "Democrata",
-    category: "commercial",
+    category: "beauty",
     year: "2024",
     description: "An elegant launch set to brazilian legend Jorge Ben's classic \"Lá Vem Ela\"",
     client: "Gisele Bündchen + Cauã Raymond",
@@ -177,7 +177,7 @@ const mockWorks = [
   {
     id: 7,
     title: "Manu Gavassi",
-    category: "fashion",
+    category: "music-video",
     year: "2024",
     description: "Three short films with Manu Gavassi, blending fashion, music, and cinema. A trilogy that explores image as performance and persona.",
     client: "Three Short Films",
@@ -261,7 +261,7 @@ const mockWorks = [
   {
     id: 10,
     title: "Mother's Day",
-    category: "commercial", 
+    category: "beauty", 
     year: "2024",
     description: "Sasha, Bruna Marquezine, Xuxa and Neide — a celebration of generations and love.",
     client: "Hering",
@@ -289,7 +289,7 @@ const mockWorks = [
   {
     id: 11,
     title: "Grand Soir, by Maison Francis Kurkdjian",
-    category: "commercial",
+    category: "ai",
     year: "2024",
     description: "Grand Soir by Maison Francis Kurkdjian. A spec film crafted entirely with artificial intelligence. 100% AI-made.",
     client: "AI film",
@@ -400,9 +400,28 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
   };
 
   const getWorksByCategory = (category: string) => {
-    return category === 'all' 
-      ? mockWorks 
-      : mockWorks.filter(work => work.category === category);
+    if (category === 'all') {
+      return mockWorks;
+    }
+    
+    // Multiple categories per project mapping
+    const projectCategories: { [key: number]: string[] } = {
+      1: ['beauty', 'commercial'], // Tresemmé
+      2: ['music-video'], // Gracinha
+      3: ['commercial', 'beauty'], // Mother's Day Hering 1
+      4: ['commercial'], // Il Neige Rive Gauche
+      5: ['commercial', 'beauty'], // Desejo
+      6: ['commercial', 'beauty'], // Democrata
+      7: ['music-video'], // Manu Gavassi
+      8: ['documentary'], // Ernesto Neto
+      9: ['documentary'], // Elsa Schiaparelli
+      10: ['commercial', 'beauty'], // Mother's Day Hering 2
+      11: ['beauty', 'ai'] // Grand Soir
+    };
+    
+    return mockWorks.filter(work => 
+      projectCategories[work.id]?.includes(category) || false
+    );
   };
 
   const filteredWorks = getWorksByCategory(displayedCategory);
@@ -429,20 +448,31 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
             
             {/* Category Filter */}
             <div className="flex flex-wrap gap-4">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant="ghost"
-                  onClick={() => handleCategoryChange(category)}
-                  className={`text-base capitalize transition-all duration-200 ${
-                    selectedCategory === category
-                      ? 'text-black bg-black/5'
-                      : 'text-black/70 hover:text-black hover:bg-black/5'
-                  } ${isTransitioning ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
-                >
-                  {category}
-                </Button>
-              ))}
+              {categories.map((category) => {
+                const displayNames: { [key: string]: string } = {
+                  'all': 'All',
+                  'commercial': 'Commercial',
+                  'ai': 'A.I.',
+                  'beauty': 'Beauty',
+                  'documentary': 'Documentary',
+                  'music-video': 'Music Video'
+                };
+                
+                return (
+                  <Button
+                    key={category}
+                    variant="ghost"
+                    onClick={() => handleCategoryChange(category)}
+                    className={`text-base transition-all duration-200 ${
+                      selectedCategory === category
+                        ? 'text-black bg-black/5'
+                        : 'text-black/70 hover:text-black hover:bg-black/5'
+                    } ${isTransitioning ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}
+                  >
+                    {displayNames[category]}
+                  </Button>
+                );
+              })}
             </div>
           </div>
         </div>
