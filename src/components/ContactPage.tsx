@@ -117,7 +117,7 @@ export default function ContactPage() {
               <div>
                 <div className="text-xs text-gray-500 uppercase tracking-wide mb-3">OFFICE</div>
                 <div className="space-y-1 text-base text-black">
-                  <div>Rua Luis XIV - Sala 12</div>
+                  <div>Rua Lira, 151 - Sala 12</div>
                   <div>Vila Madalena</div>
                   <div>São Paulo - Brazil</div>
                 </div>
@@ -130,9 +130,9 @@ export default function ContactPage() {
               <div>
                 <div className="text-xs text-gray-500 uppercase tracking-wide mb-3">SOCIAL</div>
                 <div className="space-y-1 text-base text-black">
-                  <div className="cursor-pointer hover:text-gray-600 transition-colors">Instagram</div>
-                  <div className="cursor-pointer hover:text-gray-600 transition-colors">Behance</div>
-                  <div className="cursor-pointer hover:text-gray-600 transition-colors">LinkedIn</div>
+                  <a href="https://www.instagram.com/dietrichtv" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-gray-600 transition-colors block">Instagram</a>
+                  <a href="https://www.behance.net/dietrichtv" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-gray-600 transition-colors block">Behance</a>
+                  <a href="https://www.linkedin.com/company/dietrich-tv-studio" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-gray-600 transition-colors block">LinkedIn</a>
                 </div>
               </div>
               

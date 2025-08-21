@@ -319,8 +319,8 @@ export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps)
             <div>
               <div className="text-sm text-gray-500 uppercase tracking-wide mb-2">Office</div>
               <div className="space-y-1 text-sm text-black">
-                <div>Rua Luís XIV - Santo #7</div>
-                <div>São Paulo - SP</div>
+                <div>Rua Lira, 151 - Sala 12</div>
+                <div>Vila Madalena</div>
                 <div>São Paulo - Brazil</div>
               </div>
             </div>
@@ -330,9 +330,9 @@ export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps)
               <div>
                 <div className="text-sm text-gray-500 uppercase tracking-wide mb-2">Social</div>
                 <div className="space-y-1 text-sm text-black">
-                  <div>Instagram</div>
-                  <div>Behance</div>
-                  <div>LinkedIn</div>
+                  <a href="https://www.instagram.com/dietrichtv" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block">Instagram</a>
+                  <a href="https://www.behance.net/dietrichtv" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block">Behance</a>
+                  <a href="https://www.linkedin.com/company/dietrich-tv-studio" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block">LinkedIn</a>
                 </div>
               </div>
               

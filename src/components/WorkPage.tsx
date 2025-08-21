@@ -404,7 +404,7 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
               <div>
                 <div className="text-xs text-black uppercase tracking-wide mb-4">OFFICE</div>
                 <div className="space-y-1 text-sm text-black">
-                  <div>Rua Luís 151 - Sala 12</div>
+                  <div>Rua Lira, 151 - Sala 12</div>
                   <div>Vila Madalena</div>
                   <div>São Paulo - Brazil</div>
                 </div>
@@ -414,9 +414,9 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
               <div>
                 <div className="text-xs text-black uppercase tracking-wide mb-4">SOCIAL</div>
                 <div className="space-y-1 text-sm text-black">
-                  <div className="cursor-pointer hover:opacity-70 transition-opacity underline">Instagram</div>
-                  <div className="cursor-pointer hover:opacity-70 transition-opacity underline">Behance</div>
-                  <div className="cursor-pointer hover:opacity-70 transition-opacity underline">LinkedIn</div>
+                  <a href="https://www.instagram.com/dietrichtv" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-70 transition-opacity underline block">Instagram</a>
+                  <a href="https://www.behance.net/dietrichtv" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-70 transition-opacity underline block">Behance</a>
+                  <a href="https://www.linkedin.com/company/dietrich-tv-studio" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-70 transition-opacity underline block">LinkedIn</a>
                 </div>
               </div>
               
