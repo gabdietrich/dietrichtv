@@ -64,21 +64,8 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   const projectSlug = getProjectSlug(work.id);
   const projectMedia = getProjectMedia(projectSlug);
   
-  // Debug logging
-  console.log('AutoScrollCarousel Debug:', {
-    workId: work.id,
-    workTitle: work.title,
-    projectSlug,
-    projectMedia,
-    carouselFromMedia: projectMedia?.carousel,
-    fallbackVideos: work.videos.map(v => v.thumbnail)
-  });
-  
   // Use real carousel videos or fallback to work.videos
   const carouselVideos = projectMedia?.carousel || work.videos.map(v => v.thumbnail);
-  
-  // Additional debug for carousel videos
-  console.log('Final carouselVideos:', carouselVideos);
   
   // Triple the videos for seamless loop
   const tripleVideos = [
