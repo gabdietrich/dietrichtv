@@ -31,7 +31,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo/Brand */}
           <div className="mb-16">
-            <h1 className="typography-h4 text-white/90 mb-2">
+            <h1 className="typography-h5 text-white/90 mb-2">
               dietrich.tv studio
             </h1>
           </div>
@@ -43,7 +43,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <div className="absolute top-12 right-1/3 w-12 h-12 bg-red-500 rounded-full opacity-60 animate-pulse delay-1000" />
             <div className="absolute bottom-8 left-1/3 w-20 h-20 bg-red-500 rounded-full opacity-70 animate-pulse delay-500" />
             
-            <div className="typography-h1 md:text-5xl lg:text-6xl leading-tight">
+            <div className="typography-h2 md:text-5xl lg:text-6xl leading-tight">
               <p className="mb-4">
                 we are a <em className="italic">mixed-media</em> production
               </p>

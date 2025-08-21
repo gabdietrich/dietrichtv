@@ -4,7 +4,7 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto px-[15px] py-12">
         {/* Studio name at top */}
         <div className="mb-16">
-          <h1 className="typography-h2 text-black">dietrich.tv studio</h1>
+          <h1 className="typography-h5 text-black">dietrich.tv studio</h1>
         </div>
 
         {/* Main heading */}

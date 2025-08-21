@@ -5295,8 +5295,26 @@ html {
 
 /* Custom Typography Classes - Based on Figma Design System */
 
-/* H1 - Instrument Sans Regular 30 */
+/* H1 - Instrument Sans Regular 64px */
 .typography-h1 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 110%;
+  letter-spacing: -0.05em; /* -5% */
+}
+
+/* H2 - Instrument Sans Regular 30px */
+.typography-h2 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 110%;
+  letter-spacing: -0.03em; /* -3% */
+}
+
+/* H3 - Instrument Sans Regular 30px */
+.typography-h3 {
   font-family: 'Instrument Sans', sans-serif;
   font-weight: 400;
   font-size: 30px;
@@ -5304,25 +5322,7 @@ html {
   letter-spacing: -0.02em; /* -2% */
 }
 
-/* H2 - Instrument Sans SemiBold 16 */
-.typography-h2 {
-  font-family: 'Instrument Sans', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 110%;
-  letter-spacing: -0.03em; /* -3% */
-}
-
-/* H3 - Instrument Sans Regular 30 with different spacing */
-.typography-h3 {
-  font-family: 'Instrument Sans', sans-serif;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 110%;
-  letter-spacing: -0.03em; /* -3% */
-}
-
-/* H4 - Instrument Sans Regular 24 */
+/* H4 - Instrument Sans Regular 24px */
 .typography-h4 {
   font-family: 'Instrument Sans', sans-serif;
   font-weight: 400;
@@ -5331,31 +5331,48 @@ html {
   letter-spacing: -0.05em; /* -5% */
 }
 
-/* Responsive Typography */
-@media (min-width: 768px) {
-  .typography-h1 {
-    font-size: 40px;
-  }
-  
-  .typography-h3 {
-    font-size: 36px;
-  }
-  
-  .typography-h4 {
-    font-size: 28px;
-  }
+/* H5 - Instrument Sans SemiBold 16px */
+.typography-h5 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: -0.03em; /* -3% */
 }
 
-@media (min-width: 1024px) {
+/* Responsive Typography */
+@media (max-width: 767px) {
   .typography-h1 {
     font-size: 48px;
   }
   
+  .typography-h2 {
+    font-size: 24px;
+  }
+  
   .typography-h3 {
-    font-size: 42px;
+    font-size: 24px;
   }
   
   .typography-h4 {
-    font-size: 32px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .typography-h1 {
+    font-size: 56px;
+  }
+  
+  .typography-h2 {
+    font-size: 28px;
+  }
+  
+  .typography-h3 {
+    font-size: 28px;
+  }
+  
+  .typography-h4 {
+    font-size: 22px;
   }
 }

@@ -293,7 +293,7 @@ export default function WorkPage({ onNavigate }: WorkPageProps) {
           {/* Our work title and Category Filter in same line */}
           <div className="flex justify-between items-center mb-6">
             {/* Our work title - smaller */}
-            <h2 className="typography-h2 text-black">Our work</h2>
+            <h2 className="typography-h5 text-black">Our work</h2>
             
             {/* Category Filter */}
             <div className="flex flex-wrap gap-4">
