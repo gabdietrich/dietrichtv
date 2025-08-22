@@ -2,6 +2,7 @@
 
 export interface MediaConfig {
   carousel: string[]; // Videos para carrossel principal (3 videos)
+  carouselMobile?: string[]; // Videos otimizados para mobile (360x360)
   gallery: string[];  // Imagens para galeria interna (3 imagens FullHD)
   thumbnail: string;  // Thumbnail quadrado do projeto
   vimeoId: string;   // ID do vídeo no Vimeo
@@ -123,6 +124,11 @@ export const projectMedia: ProjectMedia = {
       '/media/projects/ernesto-neto-le-bon-marche/carousel/video-1.mp4',
       '/media/projects/ernesto-neto-le-bon-marche/carousel/video-2.mp4',
       '/media/projects/ernesto-neto-le-bon-marche/carousel/video-3.mp4'
+    ],
+    carouselMobile: [
+      '/media/projects/ernesto-neto-le-bon-marche/carousel/video-1-mobile.mp4',
+      '/media/projects/ernesto-neto-le-bon-marche/carousel/video-2-mobile.mp4',
+      '/media/projects/ernesto-neto-le-bon-marche/carousel/video-3-mobile.mp4'
     ],
     gallery: [
       '/media/projects/ernesto-neto-le-bon-marche/gallery/image-1.jpg',
