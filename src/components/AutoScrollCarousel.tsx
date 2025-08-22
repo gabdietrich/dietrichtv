@@ -116,7 +116,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
 
       {/* Fixed project info in two-column layout */}
       <div className="px-[15px]">
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between">
           {/* Left column - Project info */}
           <div className="space-y-1">
             <div className="text-sm text-gray-500">Project</div>
@@ -128,7 +128,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
           </div>
           
           {/* Right column - Description and actions */}
-          <div className="flex flex-col items-end space-y-4 max-w-md">
+          <div className="flex flex-col items-end space-y-4 max-w-md" style={{ paddingTop: '32px' }}>
             <p className="text-gray-600 text-sm text-right">
               {work.description}
             </p>
