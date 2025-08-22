@@ -78,10 +78,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   // Use real carousel videos or fallback
   const carouselVideos = projectMedia?.carousel || work.videos.map(v => v.thumbnail);
   
-  // Debug logging
-  console.log('Project:', work.title, 'Slug:', projectSlug);
-  console.log('Media found:', projectMedia);
-  console.log('Carousel videos:', carouselVideos);
+
   
   // Triple the videos for seamless loop
   const tripleVideos = [
@@ -108,14 +105,8 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[312px] md:w-[480px] h-[312px] md:h-[480px] bg-gray-900 overflow-hidden relative border-2 border-red-500"
+                className="flex-shrink-0 w-[312px] md:w-[480px] aspect-square bg-gray-900 overflow-hidden relative"
               >
-                {/* Fallback content for debugging */}
-                <div className="absolute inset-0 flex items-center justify-center text-white text-sm">
-                  Video {index + 1}<br/>
-                  {videoSrc ? 'Has Source' : 'No Source'}
-                </div>
-                
                 <video
                   src={videoSrc}
                   className={`w-full h-full object-cover transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -124,10 +115,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
                   muted
                   playsInline
                   onLoadedData={() => handleVideoLoad(videoKey)}
-                  onError={() => {
-                    console.error('Video failed to load:', videoSrc);
-                    console.error('Video element:', videoKey);
-                  }}
+                  onError={() => console.error('Video failed to load:', videoSrc)}
                 />
                 <div className="absolute inset-0 bg-black/10 pointer-events-none" />
               </div>
