@@ -92,21 +92,41 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
                 key={videoKey}
                 className="flex-shrink-0 w-[312px] md:w-[480px]"
               >
-                {/* Square video container - non-interactive with sharp corners */}
-                <div className="relative aspect-square bg-gray-900 overflow-hidden">
-                  <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+                {/* Square video container - DEBUGGING VERSION */}
+                <div 
+                  className="relative bg-red-500 border-4 border-yellow-400"
+                  style={{ 
+                    width: '100%', 
+                    height: '480px', // Fixed square height
+                    overflow: 'hidden'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-blue-200 border-2 border-green-500">
+                    <div className="text-black text-xs p-1">
+                      Container: 480x480<br/>
+                      Video: {videoSrc ? 'loaded' : 'no source'}
+                    </div>
                     <video
                       src={videoSrc}
-                      className="w-full h-full object-cover block"
-                      style={{ maxWidth: '100%', maxHeight: '100%' }}
+                      className="absolute top-0 left-0"
+                      style={{ 
+                        width: '480px',
+                        height: '480px',
+                        objectFit: 'cover',
+                        border: '3px solid purple'
+                      }}
                       autoPlay
                       loop
                       muted
                       playsInline
-                      onLoadedData={() => handleVideoLoad(videoKey)}
-                      onError={() => console.error('Video failed to load:', videoSrc)}
+                      onLoadedData={() => {
+                        console.log('Video loaded:', videoSrc);
+                        handleVideoLoad(videoKey);
+                      }}
+                      onError={(e) => {
+                        console.error('Video failed:', videoSrc, e);
+                      }}
                     />
-                    <div className="absolute inset-0 bg-black/10" />
                   </div>
                 </div>
               </div>
