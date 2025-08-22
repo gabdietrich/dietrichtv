@@ -103,13 +103,13 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[312px] md:w-[480px]"
+                className="flex-shrink-0 w-[312px] md:w-[480px] h-[312px] md:h-[480px]"
               >
-                <div className="relative aspect-square bg-gray-900 overflow-hidden">
-                  <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="relative w-full h-full bg-gray-900 overflow-hidden">
+                  <div className={`absolute inset-0 transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <video
                       src={videoSrc}
-                      className="w-full h-full object-cover block"
+                      className="absolute inset-0 w-full h-full object-cover"
                       autoPlay
                       loop
                       muted
