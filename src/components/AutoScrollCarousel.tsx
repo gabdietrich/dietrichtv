@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 import { getProjectMedia, getProjectSlug } from '../config/mediaConfig';
 
 interface Video {
@@ -27,44 +28,26 @@ interface AutoScrollCarouselProps {
 export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: AutoScrollCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [videosLoaded, setVideosLoaded] = useState<Set<string>>(new Set());
-  const [isUserInteracting, setIsUserInteracting] = useState(false);
 
   const handleVideoLoad = (videoKey: string) => {
     setVideosLoaded(prev => new Set(prev).add(videoKey));
   };
 
-  // Simplified touch handlers
-  const handleTouchStart = () => {
-    setIsUserInteracting(true);
-  };
-
-  const handleTouchEnd = () => {
-    setIsUserInteracting(false);
-  };
-
-  // Simplified auto-scroll effect
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     let animationId: number;
+    let scrollPosition = 0;
 
     const animate = () => {
-      if (scrollContainer && !isUserInteracting) {
-        const prevScroll = scrollContainer.scrollLeft;
-        scrollContainer.scrollLeft += speed / 60;
-        
-        // Debug: check if scroll is actually happening
-        if (scrollContainer.scrollLeft === prevScroll) {
-          console.log('Scroll not moving! Width:', scrollContainer.scrollWidth, 'Current:', scrollContainer.scrollLeft);
-        }
-        
-        // Reset when reaching end of first set
-        const maxScroll = scrollContainer.scrollWidth / 3;
-        if (scrollContainer.scrollLeft >= maxScroll) {
-          scrollContainer.scrollLeft = 0;
-        }
+      scrollPosition += speed / 60; // 60fps assumption
+      
+      if (scrollPosition >= scrollContainer.scrollWidth / 3) {
+        scrollPosition = 0;
       }
+      
+      scrollContainer.scrollLeft = scrollPosition;
       animationId = requestAnimationFrame(animate);
     };
 
@@ -75,16 +58,14 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
         cancelAnimationFrame(animationId);
       }
     };
-  }, [speed, isUserInteracting]);
+  }, [speed]);
 
-  // Get media for this project
+  // Get real media for this project
   const projectSlug = getProjectSlug(work.id);
   const projectMedia = getProjectMedia(projectSlug);
   
-  // Use real carousel videos or fallback
+  // Use real carousel videos or fallback to work.videos
   const carouselVideos = projectMedia?.carousel || work.videos.map(v => v.thumbnail);
-  
-
   
   // Triple the videos for seamless loop
   const tripleVideos = [
@@ -95,14 +76,12 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
 
   return (
     <div className="mb-[120px]">
-      {/* Scrolling videos */}
+      {/* Scrolling videos first */}
       <div className="overflow-hidden mb-8">
         <div 
           ref={scrollRef}
-          className="flex gap-6 overflow-x-scroll px-[15px] scrollbar-hide"
+          className="flex gap-6 overflow-x-hidden px-[15px]"
           style={{ scrollBehavior: 'auto' }}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
         >
           {tripleVideos.map((videoSrc, index) => {
             const videoKey = `${work.id}-${index}`;
@@ -111,26 +90,31 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[312px] lg:w-[580px] aspect-square bg-gray-900 overflow-hidden relative"
+                className="flex-shrink-0 w-[312px] md:w-[480px]"
               >
-                <video
-                  src={videoSrc}
-                  className={`w-full h-full object-cover transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  onLoadedData={() => handleVideoLoad(videoKey)}
-                  onError={() => console.error('Video failed to load:', videoSrc)}
-                />
-                <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+                {/* Square video container - non-interactive with sharp corners */}
+                <div className="relative aspect-square bg-gray-900 overflow-hidden">
+                  <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+                    <video
+                      src={videoSrc}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      onLoadedData={() => handleVideoLoad(videoKey)}
+                      onError={() => console.error('Video failed to load:', videoSrc)}
+                    />
+                    <div className="absolute inset-0 bg-black/10" />
+                  </div>
+                </div>
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* Project info */}
+      {/* Fixed project info in two-column layout */}
       <div className="px-[15px]">
         <div className="flex justify-between">
           {/* Left column - Project info */}
@@ -143,7 +127,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
           </div>
           
           {/* Right column - Description and actions */}
-          <div className="flex flex-col items-end space-y-4 max-w-md pt-24 md:pt-8">
+          <div className="flex flex-col items-end space-y-4 max-w-md pt-12 md:pt-8">
             <p className="text-gray-600 text-sm text-right">
               {work.description}
             </p>
