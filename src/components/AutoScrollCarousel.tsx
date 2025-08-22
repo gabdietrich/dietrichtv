@@ -26,6 +26,9 @@ interface AutoScrollCarouselProps {
 }
 
 export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: AutoScrollCarouselProps) {
+  console.log('🎬 AutoScrollCarousel rendered for:', work.title);
+  console.log('🎬 Work object:', work);
+  
   const scrollRef = useRef<HTMLDivElement>(null);
   const [videosLoaded, setVideosLoaded] = useState<Set<string>>(new Set());
 
@@ -74,8 +77,16 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
     ...carouselVideos
   ];
 
+  if (!work) {
+    return <div className="bg-red-500 text-white p-4">❌ ERROR: No work data provided</div>;
+  }
+
   return (
-    <div className="mb-[120px]">
+    <div className="mb-[120px] bg-purple-300 border-8 border-orange-500 p-4">
+      <div className="bg-yellow-200 text-black p-2 mb-4">
+        🎬 CAROUSEL FOR: {work.title} | Videos: {tripleVideos.length}
+      </div>
+      
       {/* Scrolling videos first */}
       <div className="overflow-hidden mb-8">
         <div 
