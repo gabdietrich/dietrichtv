@@ -61,17 +61,16 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
     if (!scrollContainer) return;
 
     let animationId: number;
-    let scrollPosition = 0;
 
     const animate = () => {
       if (!isUserInteracting) { // Pause animation during user interaction
-        scrollPosition += speed / 60; // 60fps assumption
+        scrollContainer.scrollLeft += speed / 60; // Continue from current position
         
-        if (scrollPosition >= scrollContainer.scrollWidth / 3) {
-          scrollPosition = 0;
+        // Reset scroll position when reaching the end of first set
+        const maxScroll = scrollContainer.scrollWidth / 3;
+        if (scrollContainer.scrollLeft >= maxScroll) {
+          scrollContainer.scrollLeft = 0;
         }
-        
-        scrollContainer.scrollLeft = scrollPosition;
       }
       animationId = requestAnimationFrame(animate);
     };
