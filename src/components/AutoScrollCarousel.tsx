@@ -99,7 +99,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
       <div className="overflow-hidden mb-8">
         <div 
           ref={scrollRef}
-          className="flex gap-6 overflow-x-hidden px-[15px]"
+          className="flex gap-6 overflow-x-scroll px-[15px] scrollbar-hide"
           style={{ scrollBehavior: 'auto' }}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
@@ -111,7 +111,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[312px] md:w-[580px] aspect-square bg-gray-900 overflow-hidden relative"
+                className="flex-shrink-0 w-[312px] lg:w-[580px] aspect-square bg-gray-900 overflow-hidden relative"
               >
                 <video
                   src={videoSrc}
