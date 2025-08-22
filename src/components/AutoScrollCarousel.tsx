@@ -93,7 +93,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
 
     const animate = () => {
       if (!isUserInteracting) {
-        let currentSpeed = speed / 60; // Default speed
+        let currentSpeed = speed / 60; // Default speed (always moving right to left)
         
         if (isDecelerating && Math.abs(momentum) > 0.1) {
           // Apply momentum and gradually decrease it
@@ -103,8 +103,8 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
           // Momentum has dissipated, return to normal speed
           setIsDecelerating(false);
           setMomentum(0);
-          currentSpeed = speed / 60; // Back to original speed, right to left
         }
+        // If not decelerating, always use normal speed
         
         scrollContainer.scrollLeft += currentSpeed;
         
@@ -163,7 +163,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[480px]"
+                className="flex-shrink-0 w-[312px] md:w-[480px]"
               >
                 {/* Square video container - non-interactive with sharp corners */}
                 <div className="relative aspect-square bg-gray-900 overflow-hidden">
