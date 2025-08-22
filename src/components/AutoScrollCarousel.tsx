@@ -28,9 +28,32 @@ interface AutoScrollCarouselProps {
 export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: AutoScrollCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [videosLoaded, setVideosLoaded] = useState<Set<string>>(new Set());
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchStartScrollLeft, setTouchStartScrollLeft] = useState(0);
 
   const handleVideoLoad = (videoKey: string) => {
     setVideosLoaded(prev => new Set(prev).add(videoKey));
+  };
+
+  // Touch event handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!scrollRef.current) return;
+    setIsUserInteracting(true);
+    setTouchStartX(e.touches[0].clientX);
+    setTouchStartScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!scrollRef.current || !isUserInteracting) return;
+    e.preventDefault();
+    const touchX = e.touches[0].clientX;
+    const deltaX = touchStartX - touchX;
+    scrollRef.current.scrollLeft = touchStartScrollLeft + deltaX;
+  };
+
+  const handleTouchEnd = () => {
+    setIsUserInteracting(false);
   };
 
   useEffect(() => {
@@ -41,13 +64,15 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
     let scrollPosition = 0;
 
     const animate = () => {
-      scrollPosition += speed / 60; // 60fps assumption
-      
-      if (scrollPosition >= scrollContainer.scrollWidth / 3) {
-        scrollPosition = 0;
+      if (!isUserInteracting) { // Pause animation during user interaction
+        scrollPosition += speed / 60; // 60fps assumption
+        
+        if (scrollPosition >= scrollContainer.scrollWidth / 3) {
+          scrollPosition = 0;
+        }
+        
+        scrollContainer.scrollLeft = scrollPosition;
       }
-      
-      scrollContainer.scrollLeft = scrollPosition;
       animationId = requestAnimationFrame(animate);
     };
 
@@ -58,7 +83,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
         cancelAnimationFrame(animationId);
       }
     };
-  }, [speed]);
+  }, [speed, isUserInteracting]);
 
   // Get real media for this project
   const projectSlug = getProjectSlug(work.id);
@@ -77,12 +102,15 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   return (
     <div className="mb-[120px]">
       {/* Scrolling videos first */}
-      <div className="overflow-hidden mb-8">
-        <div 
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-hidden px-[15px]"
-          style={{ scrollBehavior: 'auto' }}
-        >
+                <div className="overflow-hidden mb-8">
+            <div 
+              ref={scrollRef}
+              className="flex gap-6 overflow-x-hidden px-[15px]"
+              style={{ scrollBehavior: 'auto' }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
           {tripleVideos.map((videoSrc, index) => {
             const videoKey = `${work.id}-${index}`;
             const isLoaded = videosLoaded.has(videoKey);
@@ -127,7 +155,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
           </div>
           
           {/* Right column - Description and actions */}
-          <div className="flex flex-col items-end space-y-4 max-w-md pt-12 md:pt-8">
+          <div className="flex flex-col items-end space-y-4 max-w-md pt-24 md:pt-8">
             <p className="text-gray-600 text-sm text-right">
               {work.description}
             </p>
