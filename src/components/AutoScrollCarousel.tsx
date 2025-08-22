@@ -64,8 +64,9 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   const projectSlug = getProjectSlug(work.id);
   const projectMedia = getProjectMedia(projectSlug);
   
-  // Prioritize mobile videos (360x360) for consistent sizing, fallback to desktop, then fallback
+  // Use mobile-optimized media (360x360) for consistent 360px container sizing
   const carouselVideos = projectMedia?.carouselMobile 
+    || projectMedia?.carouselDesktop 
     || projectMedia?.carousel 
     || work.videos.map(v => v.thumbnail);
   

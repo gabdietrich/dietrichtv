@@ -1,8 +1,9 @@
 // 📁 Configuração centralizada de mídia para o portfolio
 
 export interface MediaConfig {
-  carousel: string[]; // Videos para carrossel principal (3 videos)
-  carouselMobile?: string[]; // Videos otimizados para mobile (360x360)
+  carousel: string[]; // Videos/imagens para carrossel principal (3 items)
+  carouselMobile?: string[]; // Videos/imagens otimizados para mobile (360x360)
+  carouselDesktop?: string[]; // Videos/imagens otimizados para desktop (720x720+)
   gallery: string[];  // Imagens para galeria interna (3 imagens FullHD)
   thumbnail: string;  // Thumbnail quadrado do projeto
   vimeoId: string;   // ID do vídeo no Vimeo
@@ -16,14 +17,19 @@ export interface ProjectMedia {
 export const projectMedia: ProjectMedia = {
   'tresemme-brilho-lamelar': {
     carousel: [
-      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_01.mp4',
-      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_03.mp4',
-      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_04.mp4'
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-1.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-2.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-3.mp4'
     ],
     carouselMobile: [
-      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_01-mobile.mp4',
-      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_03-mobile.mp4',
-      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_04-mobile.mp4'
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-1-mobile.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-2-mobile.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-3-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-1-desktop.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-2-desktop.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/video-3-desktop.mp4'
     ],
     gallery: [
       '/media/projects/tresemme-brilho-lamelar/gallery/image-1.jpg',
@@ -52,8 +58,18 @@ export const projectMedia: ProjectMedia = {
   'mothers-day-hering-1': {
     carousel: [
       '/media/projects/mothers-day-hering-1/carousel/video-1.mp4',
-      '/media/projects/mothers-day-hering-1/carousel/video-2.mp4',
-      '/media/projects/mothers-day-hering-1/carousel/video-3.mp4'
+      '/media/projects/mothers-day-hering-1/carousel/video-2.jpg',
+      '/media/projects/mothers-day-hering-1/carousel/video-3.jpg'
+    ],
+    carouselMobile: [
+      '/media/projects/mothers-day-hering-1/carousel/video-1-mobile.mp4',
+      '/media/projects/mothers-day-hering-1/carousel/video-2-mobile.jpg',
+      '/media/projects/mothers-day-hering-1/carousel/video-3-mobile.jpg'
+    ],
+    carouselDesktop: [
+      '/media/projects/mothers-day-hering-1/carousel/video-1-desktop.mp4',
+      '/media/projects/mothers-day-hering-1/carousel/video-2-desktop.jpg',
+      '/media/projects/mothers-day-hering-1/carousel/video-3-desktop.jpg'
     ],
     gallery: [
       '/media/projects/mothers-day-hering-1/gallery/image-1.jpg',
