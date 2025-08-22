@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import { getProjectMedia, getProjectSlug } from '../config/mediaConfig';
 
 interface Video {
@@ -29,62 +28,21 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   const scrollRef = useRef<HTMLDivElement>(null);
   const [videosLoaded, setVideosLoaded] = useState<Set<string>>(new Set());
   const [isUserInteracting, setIsUserInteracting] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(0);
-  const [touchStartScrollLeft, setTouchStartScrollLeft] = useState(0);
-  const [touchStartTime, setTouchStartTime] = useState(0);
-  const [lastTouchX, setLastTouchX] = useState(0);
-  const [lastTouchTime, setLastTouchTime] = useState(0);
-  const [momentum, setMomentum] = useState(0);
-  const [isDecelerating, setIsDecelerating] = useState(false);
 
   const handleVideoLoad = (videoKey: string) => {
     setVideosLoaded(prev => new Set(prev).add(videoKey));
   };
 
-  // Touch event handlers for mobile swipe with momentum
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!scrollRef.current) return;
+  // Simplified touch handlers
+  const handleTouchStart = () => {
     setIsUserInteracting(true);
-    setIsDecelerating(false);
-    setMomentum(0);
-    const now = Date.now();
-    const touchX = e.touches[0].clientX;
-    setTouchStartX(touchX);
-    setTouchStartTime(now);
-    setLastTouchX(touchX);
-    setLastTouchTime(now);
-    setTouchStartScrollLeft(scrollRef.current.scrollLeft);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!scrollRef.current || !isUserInteracting) return;
-    e.preventDefault();
-    const now = Date.now();
-    const touchX = e.touches[0].clientX;
-    const deltaX = touchStartX - touchX;
-    scrollRef.current.scrollLeft = touchStartScrollLeft + deltaX;
-    
-    // Track movement for momentum calculation
-    setLastTouchX(touchX);
-    setLastTouchTime(now);
   };
 
   const handleTouchEnd = () => {
-    if (!scrollRef.current) return;
-    
-    const now = Date.now();
-    const timeDiff = now - lastTouchTime;
-    const touchDiff = lastTouchX - touchStartX;
-    
-    // Calculate velocity (pixels per ms)
-    const velocity = timeDiff > 0 ? touchDiff / timeDiff : 0;
-    
-    // Set momentum (convert to scroll velocity, negative because we want opposite direction for momentum)
-    setMomentum(-velocity * 100); // Multiply for more noticeable effect
     setIsUserInteracting(false);
-    setIsDecelerating(true);
   };
 
+  // Simplified auto-scroll effect
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
@@ -92,30 +50,13 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
     let animationId: number;
 
     const animate = () => {
-      if (!isUserInteracting) {
-        let currentSpeed = speed / 60; // Default speed (always moving right to left)
+      if (scrollContainer && !isUserInteracting) {
+        scrollContainer.scrollLeft += speed / 60;
         
-        if (isDecelerating && Math.abs(momentum) > 0.1) {
-          // Apply momentum and gradually decrease it
-          currentSpeed = momentum / 60;
-          setMomentum(prev => prev * 0.95); // Deceleration factor
-        } else if (isDecelerating) {
-          // Momentum has dissipated, return to normal speed
-          setIsDecelerating(false);
-          setMomentum(0);
-        }
-        // If not decelerating, always use normal speed
-        
-        scrollContainer.scrollLeft += currentSpeed;
-        
-        // Reset scroll position when reaching the end of first set
+        // Reset when reaching end of first set
         const maxScroll = scrollContainer.scrollWidth / 3;
         if (scrollContainer.scrollLeft >= maxScroll) {
           scrollContainer.scrollLeft = 0;
-        }
-        // Handle negative scroll (when momentum goes backwards)
-        if (scrollContainer.scrollLeft < 0) {
-          scrollContainer.scrollLeft = maxScroll + scrollContainer.scrollLeft;
         }
       }
       animationId = requestAnimationFrame(animate);
@@ -128,13 +69,13 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
         cancelAnimationFrame(animationId);
       }
     };
-  }, [speed, isUserInteracting, momentum, isDecelerating]);
+  }, [speed, isUserInteracting]);
 
-  // Get real media for this project
+  // Get media for this project
   const projectSlug = getProjectSlug(work.id);
   const projectMedia = getProjectMedia(projectSlug);
   
-  // Use real carousel videos or fallback to work.videos
+  // Use real carousel videos or fallback
   const carouselVideos = projectMedia?.carousel || work.videos.map(v => v.thumbnail);
   
   // Triple the videos for seamless loop
@@ -146,16 +87,15 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
 
   return (
     <div className="mb-[120px]">
-      {/* Scrolling videos first */}
-                <div className="overflow-hidden mb-8">
-            <div 
-              ref={scrollRef}
-              className="flex gap-6 overflow-x-hidden px-[15px]"
-              style={{ scrollBehavior: 'auto' }}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
+      {/* Scrolling videos */}
+      <div className="overflow-hidden mb-8">
+        <div 
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-hidden px-[15px]"
+          style={{ scrollBehavior: 'auto' }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {tripleVideos.map((videoSrc, index) => {
             const videoKey = `${work.id}-${index}`;
             const isLoaded = videosLoaded.has(videoKey);
@@ -165,7 +105,6 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
                 key={videoKey}
                 className="flex-shrink-0 w-[312px] md:w-[480px]"
               >
-                {/* Square video container - non-interactive with sharp corners */}
                 <div className="relative aspect-square bg-gray-900 overflow-hidden">
                   <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <video
@@ -187,7 +126,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
         </div>
       </div>
 
-      {/* Fixed project info in two-column layout */}
+      {/* Project info */}
       <div className="px-[15px]">
         <div className="flex justify-between">
           {/* Left column - Project info */}
