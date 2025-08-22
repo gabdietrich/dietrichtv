@@ -64,11 +64,23 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   const projectSlug = getProjectSlug(work.id);
   const projectMedia = getProjectMedia(projectSlug);
   
-  // Use mobile-optimized media (360x360) for consistent 360px container sizing
-  const carouselVideos = projectMedia?.carouselMobile 
-    || projectMedia?.carouselDesktop 
-    || projectMedia?.carousel 
-    || work.videos.map(v => v.thumbnail);
+  // Detect screen size for appropriate media selection
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+  
+  // Use appropriate media based on screen size
+  const carouselVideos = isMobile 
+    ? (projectMedia?.carouselMobile || projectMedia?.carousel || work.videos.map(v => v.thumbnail))
+    : (projectMedia?.carouselDesktop || projectMedia?.carousel || work.videos.map(v => v.thumbnail));
   
   // Triple the videos for seamless loop
   const tripleVideos = [
@@ -93,21 +105,31 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[360px]"
+                className={`flex-shrink-0 ${isMobile ? 'w-[360px]' : 'w-[720px]'}`}
               >
                 {/* Square video container - non-interactive with sharp corners */}
                 <div className="relative aspect-square bg-gray-900 overflow-hidden">
                   <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-                    <video
-                      src={videoSrc}
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      onLoadedData={() => handleVideoLoad(videoKey)}
-                      onError={() => console.error('Video failed to load:', videoSrc)}
-                    />
+                    {videoSrc.endsWith('.jpg') || videoSrc.endsWith('.jpeg') || videoSrc.endsWith('.png') ? (
+                      <img
+                        src={videoSrc}
+                        className="w-full h-full object-cover"
+                        onLoad={() => handleVideoLoad(videoKey)}
+                        onError={() => console.error('Image failed to load:', videoSrc)}
+                        alt=""
+                      />
+                    ) : (
+                      <video
+                        src={videoSrc}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        onLoadedData={() => handleVideoLoad(videoKey)}
+                        onError={() => console.error('Video failed to load:', videoSrc)}
+                      />
+                    )}
                     <div className="absolute inset-0 bg-black/10" />
                   </div>
                 </div>

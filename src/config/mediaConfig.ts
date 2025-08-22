@@ -116,6 +116,16 @@ export const projectMedia: ProjectMedia = {
       '/media/projects/democrata-gisele-caua/carousel/video-2.mp4',
       '/media/projects/democrata-gisele-caua/carousel/video-3.mp4'
     ],
+    carouselMobile: [
+      '/media/projects/democrata-gisele-caua/carousel/video-1-mobile.mp4',
+      '/media/projects/democrata-gisele-caua/carousel/video-2-mobile.mp4',
+      '/media/projects/democrata-gisele-caua/carousel/video-3-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/democrata-gisele-caua/carousel/video-1-desktop.mp4',
+      '/media/projects/democrata-gisele-caua/carousel/video-2-desktop.mp4',
+      '/media/projects/democrata-gisele-caua/carousel/video-3-desktop.mp4'
+    ],
     gallery: [
       '/media/projects/democrata-gisele-caua/gallery/image-1.jpg',
       '/media/projects/democrata-gisele-caua/gallery/image-2.jpg',
@@ -127,9 +137,19 @@ export const projectMedia: ProjectMedia = {
   
   'manu-gavassi-three-films': {
     carousel: [
-      '/media/projects/manu-gavassi-three-films/carousel/video-1.mp4',
-      '/media/projects/manu-gavassi-three-films/carousel/video-2.mp4',
+      '/media/projects/manu-gavassi-three-films/carousel/programa_de_proteção_à_carreira_artística (Original)_cena_001.mp4',
+      '/media/projects/manu-gavassi-three-films/carousel/sexo,_poder_e_arte (Original)_cena_007.mp4',
       '/media/projects/manu-gavassi-three-films/carousel/video-3.mp4'
+    ],
+    carouselMobile: [
+      '/media/projects/manu-gavassi-three-films/carousel/programa_de_proteção_à_carreira_artística (Original)_cena_001-mobile.mp4',
+      '/media/projects/manu-gavassi-three-films/carousel/sexo,_poder_e_arte (Original)_cena_007-mobile.mp4',
+      '/media/projects/manu-gavassi-three-films/carousel/video-3-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/manu-gavassi-three-films/carousel/programa_de_proteção_à_carreira_artística (Original)_cena_001-desktop.mp4',
+      '/media/projects/manu-gavassi-three-films/carousel/sexo,_poder_e_arte (Original)_cena_007-desktop.mp4',
+      '/media/projects/manu-gavassi-three-films/carousel/video-3-desktop.mp4'
     ],
     gallery: [
       '/media/projects/manu-gavassi-three-films/gallery/image-1.jpg',
@@ -150,6 +170,11 @@ export const projectMedia: ProjectMedia = {
       '/media/projects/ernesto-neto-le-bon-marche/carousel/video-1-mobile.mp4',
       '/media/projects/ernesto-neto-le-bon-marche/carousel/video-2-mobile.mp4',
       '/media/projects/ernesto-neto-le-bon-marche/carousel/video-3-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/ernesto-neto-le-bon-marche/carousel/video-1-desktop.mp4',
+      '/media/projects/ernesto-neto-le-bon-marche/carousel/video-2-desktop.mp4',
+      '/media/projects/ernesto-neto-le-bon-marche/carousel/video-3-desktop.mp4'
     ],
     gallery: [
       '/media/projects/ernesto-neto-le-bon-marche/gallery/image-1.jpg',
