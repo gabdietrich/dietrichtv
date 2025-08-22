@@ -103,23 +103,19 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[312px] md:w-[480px] h-[312px] md:h-[480px]"
+                className="flex-shrink-0 w-[312px] md:w-[480px] h-[312px] md:h-[480px] bg-gray-900 overflow-hidden relative"
               >
-                <div className="relative w-full h-full bg-gray-900 overflow-hidden">
-                  <div className={`absolute inset-0 transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-                    <video
-                      src={videoSrc}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      onLoadedData={() => handleVideoLoad(videoKey)}
-                      onError={() => console.error('Video failed to load:', videoSrc)}
-                    />
-                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-                  </div>
-                </div>
+                <video
+                  src={videoSrc}
+                  className={`w-full h-full object-cover transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  onLoadedData={() => handleVideoLoad(videoKey)}
+                  onError={() => console.error('Video failed to load:', videoSrc)}
+                />
+                <div className="absolute inset-0 bg-black/10 pointer-events-none" />
               </div>
             );
           })}
