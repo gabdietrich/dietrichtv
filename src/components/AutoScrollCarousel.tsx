@@ -109,7 +109,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
                   <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <video
                       src={videoSrc}
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
                       autoPlay
                       loop
                       muted
