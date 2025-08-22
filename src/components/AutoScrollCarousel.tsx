@@ -31,29 +31,58 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchStartScrollLeft, setTouchStartScrollLeft] = useState(0);
+  const [touchStartTime, setTouchStartTime] = useState(0);
+  const [lastTouchX, setLastTouchX] = useState(0);
+  const [lastTouchTime, setLastTouchTime] = useState(0);
+  const [momentum, setMomentum] = useState(0);
+  const [isDecelerating, setIsDecelerating] = useState(false);
 
   const handleVideoLoad = (videoKey: string) => {
     setVideosLoaded(prev => new Set(prev).add(videoKey));
   };
 
-  // Touch event handlers for mobile swipe
+  // Touch event handlers for mobile swipe with momentum
   const handleTouchStart = (e: React.TouchEvent) => {
     if (!scrollRef.current) return;
     setIsUserInteracting(true);
-    setTouchStartX(e.touches[0].clientX);
+    setIsDecelerating(false);
+    setMomentum(0);
+    const now = Date.now();
+    const touchX = e.touches[0].clientX;
+    setTouchStartX(touchX);
+    setTouchStartTime(now);
+    setLastTouchX(touchX);
+    setLastTouchTime(now);
     setTouchStartScrollLeft(scrollRef.current.scrollLeft);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!scrollRef.current || !isUserInteracting) return;
     e.preventDefault();
+    const now = Date.now();
     const touchX = e.touches[0].clientX;
     const deltaX = touchStartX - touchX;
     scrollRef.current.scrollLeft = touchStartScrollLeft + deltaX;
+    
+    // Track movement for momentum calculation
+    setLastTouchX(touchX);
+    setLastTouchTime(now);
   };
 
   const handleTouchEnd = () => {
+    if (!scrollRef.current) return;
+    
+    const now = Date.now();
+    const timeDiff = now - lastTouchTime;
+    const touchDiff = lastTouchX - touchStartX;
+    
+    // Calculate velocity (pixels per ms)
+    const velocity = timeDiff > 0 ? touchDiff / timeDiff : 0;
+    
+    // Set momentum (convert to scroll velocity, negative because we want opposite direction for momentum)
+    setMomentum(-velocity * 100); // Multiply for more noticeable effect
     setIsUserInteracting(false);
+    setIsDecelerating(true);
   };
 
   useEffect(() => {
@@ -63,13 +92,30 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
     let animationId: number;
 
     const animate = () => {
-      if (!isUserInteracting) { // Pause animation during user interaction
-        scrollContainer.scrollLeft += speed / 60; // Continue from current position
+      if (!isUserInteracting) {
+        let currentSpeed = speed / 60; // Default speed
+        
+        if (isDecelerating && Math.abs(momentum) > 0.1) {
+          // Apply momentum and gradually decrease it
+          currentSpeed = momentum / 60;
+          setMomentum(prev => prev * 0.95); // Deceleration factor
+        } else if (isDecelerating) {
+          // Momentum has dissipated, return to normal speed
+          setIsDecelerating(false);
+          setMomentum(0);
+          currentSpeed = speed / 60; // Back to original speed, right to left
+        }
+        
+        scrollContainer.scrollLeft += currentSpeed;
         
         // Reset scroll position when reaching the end of first set
         const maxScroll = scrollContainer.scrollWidth / 3;
         if (scrollContainer.scrollLeft >= maxScroll) {
           scrollContainer.scrollLeft = 0;
+        }
+        // Handle negative scroll (when momentum goes backwards)
+        if (scrollContainer.scrollLeft < 0) {
+          scrollContainer.scrollLeft = maxScroll + scrollContainer.scrollLeft;
         }
       }
       animationId = requestAnimationFrame(animate);
@@ -82,7 +128,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
         cancelAnimationFrame(animationId);
       }
     };
-  }, [speed, isUserInteracting]);
+  }, [speed, isUserInteracting, momentum, isDecelerating]);
 
   // Get real media for this project
   const projectSlug = getProjectSlug(work.id);
