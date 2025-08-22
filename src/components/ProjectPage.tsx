@@ -354,7 +354,8 @@ export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps)
           </div>
 
           {/* Right column - Description and tags */}
-          <div className="space-y-8 pt-[110px]">
+          <div className="mt-[110px]">
+            <div className="space-y-8">
             <div className="space-y-6">
               {projectContent.paragraphs.map((paragraph, index) => (
                 <p key={index} className="typography-paragraph1 text-black">
@@ -370,6 +371,7 @@ export default function ProjectPage({ projectId, onNavigate }: ProjectPageProps)
                   <div key={index} className="typography-paragraph2 text-gray-500">{tag}</div>
                 ))}
               </div>
+            </div>
             </div>
           </div>
         </div>
