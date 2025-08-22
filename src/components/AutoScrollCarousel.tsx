@@ -64,11 +64,10 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
   const projectSlug = getProjectSlug(work.id);
   const projectMedia = getProjectMedia(projectSlug);
   
-  // Use mobile videos if available, otherwise desktop videos, or fallback
-  const isMobile = window.innerWidth < 768; // md breakpoint
-  const carouselVideos = (isMobile && projectMedia?.carouselMobile) 
-    ? projectMedia.carouselMobile 
-    : (projectMedia?.carousel || work.videos.map(v => v.thumbnail));
+  // Prioritize mobile videos (360x360) for consistent sizing, fallback to desktop, then fallback
+  const carouselVideos = projectMedia?.carouselMobile 
+    || projectMedia?.carousel 
+    || work.videos.map(v => v.thumbnail);
   
   // Triple the videos for seamless loop
   const tripleVideos = [
@@ -93,7 +92,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[360px] md:w-[480px]"
+                className="flex-shrink-0 w-[360px]"
               >
                 {/* Square video container - non-interactive with sharp corners */}
                 <div className="relative aspect-square bg-gray-900 overflow-hidden">

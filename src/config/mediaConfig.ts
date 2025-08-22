@@ -16,9 +16,14 @@ export interface ProjectMedia {
 export const projectMedia: ProjectMedia = {
   'tresemme-brilho-lamelar': {
     carousel: [
-      '/media/projects/tresemme-brilho-lamelar/carousel/video-1.mp4',
-      '/media/projects/tresemme-brilho-lamelar/carousel/video-2.mp4',
-      '/media/projects/tresemme-brilho-lamelar/carousel/video-3.mp4'
+      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_01.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_03.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_04.mp4'
+    ],
+    carouselMobile: [
+      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_01-mobile.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_03-mobile.mp4',
+      '/media/projects/tresemme-brilho-lamelar/carousel/tresemmé_-_brilho_lamelar (Original)_04-mobile.mp4'
     ],
     gallery: [
       '/media/projects/tresemme-brilho-lamelar/gallery/image-1.jpg',
