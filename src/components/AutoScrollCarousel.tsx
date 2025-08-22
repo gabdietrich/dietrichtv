@@ -51,7 +51,13 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
 
     const animate = () => {
       if (scrollContainer && !isUserInteracting) {
+        const prevScroll = scrollContainer.scrollLeft;
         scrollContainer.scrollLeft += speed / 60;
+        
+        // Debug: check if scroll is actually happening
+        if (scrollContainer.scrollLeft === prevScroll) {
+          console.log('Scroll not moving! Width:', scrollContainer.scrollWidth, 'Current:', scrollContainer.scrollLeft);
+        }
         
         // Reset when reaching end of first set
         const maxScroll = scrollContainer.scrollWidth / 3;
@@ -105,7 +111,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
             return (
               <div 
                 key={videoKey}
-                className="flex-shrink-0 w-[312px] md:w-[480px] aspect-square bg-gray-900 overflow-hidden relative"
+                className="flex-shrink-0 w-[312px] md:w-[580px] aspect-square bg-gray-900 overflow-hidden relative"
               >
                 <video
                   src={videoSrc}
