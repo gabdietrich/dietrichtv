@@ -42,9 +42,19 @@ export const projectMedia: ProjectMedia = {
   
   'gracinha-disney': {
     carousel: [
-      '/media/projects/gracinha-disney/carousel/video-1.mp4',
-      '/media/projects/gracinha-disney/carousel/video-2.mp4',
-      '/media/projects/gracinha-disney/carousel/video-3.mp4'
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_05.mp4',
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_10.mp4',
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_13.mp4'
+    ],
+    carouselMobile: [
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_05-mobile.mp4',
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_10-mobile.mp4',
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_13-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_05-desktop.mp4',
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_10-desktop.mp4',
+      '/media/projects/gracinha-disney/carousel/01_gracinha_trechos.mp4 (Original)_13-desktop.mp4'
     ],
     gallery: [
       '/media/projects/gracinha-disney/gallery/image-1.jpg',
@@ -191,6 +201,16 @@ export const projectMedia: ProjectMedia = {
       '/media/projects/elsa-schiaparelli-private-album/carousel/video-2.mp4',
       '/media/projects/elsa-schiaparelli-private-album/carousel/video-3.mp4'
     ],
+    carouselMobile: [
+      '/media/projects/elsa-schiaparelli-private-album/carousel/video-1-mobile.mp4',
+      '/media/projects/elsa-schiaparelli-private-album/carousel/video-2-mobile.mp4',
+      '/media/projects/elsa-schiaparelli-private-album/carousel/video-3-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/elsa-schiaparelli-private-album/carousel/video-1-desktop.mp4',
+      '/media/projects/elsa-schiaparelli-private-album/carousel/video-2-desktop.mp4',
+      '/media/projects/elsa-schiaparelli-private-album/carousel/video-3-desktop.mp4'
+    ],
     gallery: [
       '/media/projects/elsa-schiaparelli-private-album/gallery/image-1.jpg',
       '/media/projects/elsa-schiaparelli-private-album/gallery/image-2.jpg',
@@ -206,6 +226,16 @@ export const projectMedia: ProjectMedia = {
       '/media/projects/mothers-day-hering-2/carousel/video-2.mp4',
       '/media/projects/mothers-day-hering-2/carousel/video-3.mp4'
     ],
+    carouselMobile: [
+      '/media/projects/mothers-day-hering-2/carousel/video-1-mobile.mp4',
+      '/media/projects/mothers-day-hering-2/carousel/video-2-mobile.mp4',
+      '/media/projects/mothers-day-hering-2/carousel/video-3-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/mothers-day-hering-2/carousel/video-1-desktop.mp4',
+      '/media/projects/mothers-day-hering-2/carousel/video-2-desktop.mp4',
+      '/media/projects/mothers-day-hering-2/carousel/video-3-desktop.mp4'
+    ],
     gallery: [
       '/media/projects/mothers-day-hering-2/gallery/image-1.jpg',
       '/media/projects/mothers-day-hering-2/gallery/image-2.jpg',
@@ -219,7 +249,17 @@ export const projectMedia: ProjectMedia = {
     carousel: [
       '/media/projects/grand-soir-maison-francis/carousel/video-1.mp4',
       '/media/projects/grand-soir-maison-francis/carousel/video-2.mp4',
-      '/media/projects/grand-soir-maison-francis/carousel/video-3.mp4'
+      '/media/projects/grand-soir-maison-francis/carousel/Metadata_prompt_name_weightless_2025080711 (1).mp4'
+    ],
+    carouselMobile: [
+      '/media/projects/grand-soir-maison-francis/carousel/video-1-mobile.mp4',
+      '/media/projects/grand-soir-maison-francis/carousel/video-2-mobile.mp4',
+      '/media/projects/grand-soir-maison-francis/carousel/Metadata_prompt_name_weightless_2025080711 (1)-mobile.mp4'
+    ],
+    carouselDesktop: [
+      '/media/projects/grand-soir-maison-francis/carousel/video-1-desktop.mp4',
+      '/media/projects/grand-soir-maison-francis/carousel/video-2-desktop.mp4',
+      '/media/projects/grand-soir-maison-francis/carousel/Metadata_prompt_name_weightless_2025080711 (1)-desktop.mp4'
     ],
     gallery: [
       '/media/projects/grand-soir-maison-francis/gallery/image-1.jpg',
