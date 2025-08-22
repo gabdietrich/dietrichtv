@@ -109,7 +109,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
                   <div className={`transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <video
                       src={videoSrc}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="w-full h-full object-cover block"
                       autoPlay
                       loop
                       muted
@@ -117,7 +117,7 @@ export default function AutoScrollCarousel({ work, speed = 10, onNavigate }: Aut
                       onLoadedData={() => handleVideoLoad(videoKey)}
                       onError={() => console.error('Video failed to load:', videoSrc)}
                     />
-                    <div className="absolute inset-0 bg-black/10" />
+                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
                   </div>
                 </div>
               </div>
